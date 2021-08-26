@@ -1,0 +1,26 @@
+div.iso-image-table-header {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-direction: row;
+    background-color: #999;
+    color: #FFF;
+    padding: 1%;
+}
+
+div.number {
+    display: flex;
+}
+
+div.size {
+    display: flex;
+}
+
+div.create-time {
+    display: flex;
+}
+
+div.name {
+    display: flex;
+    width: 30%;
+}

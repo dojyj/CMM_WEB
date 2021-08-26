@@ -4,61 +4,130 @@
     <title>CMM_WEB</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/userManagement.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1><a href="/index.html" style="cursor: pointer; color: white;"/> KETI CMM WEB</a></h1>
         </div>
-        <div class="left-navigator">
-            <div onclick="location.href='/index.html'" style="cursor: pointer;" class="navi-box">Dash Board</div>
-            <dt class="menu-control">
-                <div class="navi-box">CMM Information</div>
-                <div class="navi-box-sub" onclick="location.href='/view/CMM/dashboard.html'">- CMM Dashboard</div>
-                <div class="navi-box-sub" onclick="location.href='/view/CMM/sessionManagement.html'">- CMM Session Management</div>
-                <div class="navi-box-sub" onclick="location.href='/view/CMM/cmmLogs.html'">- CMM Logs</div>    
-            </dt>
-            <div onclick="location.href='/view/bladeServerInformation.html'" style="cursor: pointer;" class="navi-box">CM/SM Information</div>
-            <dt class="menu-control"> 
-                <div class="navi-box">Power & Thermal</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/chassisSummary.html'">- Chassis Summary</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplyInfo.html'">- Power Supply Info</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/temperatureInfo.html'">- Temperature Info</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/fanInfo.html'">- Fan Info</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/smartHeaterInfo.html'">- Smart Heater Info</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerManagement.html'">- Management Power</div>                    
-            </dt>
-            <dt class="menu-control">
-                <div class="navi-box">Firmware</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Firmware/installFWInfo.html'">- Install F/W Info</div>
-                <div class="navi-box-sub" onclick="location.href='/view/Firmware/updateFW.html'">- F/W Update</div>                    
-            </dt>
-            <dt class="menu-control">
-                <div class="navi-box">SNMP & Remote Settings</div>
-                <div class="navi-box-sub" onclick="location.href='/view/SNMP_Remote/snmpConfiguration.html'">- Configure SNMP Setting</div>
-                <div class="navi-box-sub" onclick="location.href='/view/SNMP_Remote/remoteSyslogConfiguration.html'">- Configure Remote Syslog Setting</div>                    
-            </dt>
-            <dt class="menu-control">
-                <div class="navi-box">CMM Network Summary</div>
-                <div class="navi-box-sub" onclick="location.href='/view/CMM_NETWORK/networkConfiguration.html'">- Network Configuration Summary</div>
-                <div class="navi-box-sub" onclick="location.href='/view/CMM_NETWORK/networkDnsSetting.html'">- DNS & Network Setting</div>                    
-            </dt>
-            <dt class="menu-control">
-                <div class="navi-box">User & Chassis Administration</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/userManagement.html'">- User Account</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/ldapAndAdSetting.html'">- LDAP & Active Directory</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
-                <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
-            </dt>
-            <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
-        </div> 
-        <div class ="Main-Plate">
-           userManagement
+        <div class="web-body">
+            <div class="left-navigator">
+                <div onclick="location.href='/index.html'" style="cursor: pointer;" class="navi-box">Dash Board</div>
+                <dt class="menu-control">
+                    <div class="navi-box">CMM Information</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/CMM/dashboard.html'">- CMM Dashboard</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/CMM/sessionManagement.html'">- CMM Session Management</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/CMM/cmmLogs.html'">- CMM Logs</div>    
+                </dt>
+                <div onclick="location.href='/view/bladeServerInformation.html'" style="cursor: pointer;" class="navi-box">CM/SM Information</div>
+                <dt class="menu-control"> 
+                    <div class="navi-box">Power & Thermal</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/chassisSummary.html'">- Chassis Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Supply Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/temperatureInfo.html'">- Temperature Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/fanInfo.html'">- Fan Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/smartHeaterInfo.html'">- Smart Heater Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerManagement.html'">- Power Management</div>                    
+                </dt>
+                <dt class="menu-control">
+                    <div class="navi-box">Firmware</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Firmware/installFWInfo.html'">- Install F/W Info</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Firmware/updateFW.html'">- F/W Update</div>                    
+                </dt>
+                <dt class="menu-control">
+                    <div class="navi-box">SNMP & Remote Settings</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/SNMP_Remote/snmpConfiguration.html'">- Configure SNMP Setting</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/SNMP_Remote/remoteSyslogConfiguration.html'">- Configure Remote Syslog Setting</div>                    
+                </dt>
+                <dt class="menu-control">
+                    <div class="navi-box">CMM Network Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/CMM_NETWORK/networkConfiguration.html'">- Network Configuration Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/CMM_NETWORK/networkDnsSetting.html'">- DNS & Network Setting</div>                    
+                </dt>
+                <dt class="menu-control">
+                    <div class="navi-box">User & Chassis Administration</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/userManagement.html'">- User Account</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/ldapAndAdSetting.html'">- LDAP & Active Directory</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
+                </dt>
+                <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
+                <div class="btm-logo">
+                    <img src="/images/logo-btm.png"/>
+                </div>
+            </div> 
+            <div class ="Main-Plate">
+                <div class="Plate">
+                    <div class="Plate-Header">
+                        <h2>User Management</h2>
+                    </div>
+                    <div class="Plate-Body" id="table-plate">
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>User List</p>
+                            </div>
+                            <div class="user-table-header">
+                                <div class="user-id">User ID</div>
+                                <div class="name">User Name</div>
+                                <div class="access">User Access</div>
+                                <div class="previlege">Previlege</div>
+                            </div>
+                            <div class="user-table-body">
+                            </div>
+                            <div class="modal" id="user-add-modal">
+                                <div class="modal-header">
+                                    <img src="/images/table header.png" alt="table header icon">
+                                    <p>Add User</p>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-row">
+                                        <div class="modal-key">User Name</div>
+                                        <div contenteditable="true" class="modal-value"></div>        
+                                    </div>
+                                    <div class="modal-row">
+                                        <div class="modal-key">Password</div>
+                                        <div contenteditable="true" id="password" class="modal-value"></div>        
+                                    </div>
+                                    <div class="modal-row">
+                                        <div class="modal-key">Confirm Password</div>
+                                        <div contenteditable="true" id="password" class="modal-value"></div>        
+                                    </div>
+                                    <div class="modal-row">
+                                        <div class="modal-key">Previlege</div>
+                                        <select name="PREV-SELECT">
+                                            <option value="ReadOnly" selected="selected">ReadOnly</option>
+                                            <option value="Operator">Operator</option>
+                                            <option value="Administrator">Administrator</option>            
+                                        </select>        
+                                    </div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="enable-user"/>
+                                        <label for="enable-user"><span>enable user</span></label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="modal-add-btn save">add</button>
+                                    <button class="modal-close-btn clear">close</button>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Plate-Footer">
+                            <button class="save" onclick="accountAddHandler()">Add</button>
+                            <button class="clear" onclick="accountDeleteHandler()">Delete</button>
+                        </div>
+                    </div>    
+                </div>
+            </div>    
         </div>
     </div>
+    <script type="module" src="/controller/userManagementController.js"></script>
 </body>
 
 </html>

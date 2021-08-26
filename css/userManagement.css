@@ -1,0 +1,142 @@
+div.user-table-header {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-direction: row;
+    background-color: #999;
+    color: #FFF;
+    padding: 1%;
+}
+
+div.user-table-body {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    padding: 1%;
+    background-color: #EEE;
+    flex-direction: column;
+}
+
+div.user-table-row {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: row;
+    border-bottom: 1px solid #CCC;
+    padding: 2% 0 2% 0;
+}
+div.user-id {
+    display: flex;
+    flex: 1;
+}
+
+div.name {
+    display: flex;
+    flex: 1;
+}
+
+div.access {
+    display: flex;
+    flex: 1;
+}
+
+div.previlege {
+    display: flex;
+    flex: 1;
+}
+
+#user-add-modal {
+    display: none;
+    height: 350px;
+    width: 600px;
+    padding: 20px 60px;
+    background-color: #fefefe;
+    border: 2px solid #888;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+#user-add-modal .modal_close_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal-header {
+    height: 15%;
+    width: 100%;
+    padding-top: 3%;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1em;
+}  
+
+.modal-header > img {
+    width: 20px;
+    height: 20px;
+    margin-right: 1em;
+}
+
+.modal-header > p {
+    font-weight: bolder;
+}
+
+.modal-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.modal-row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    border-bottom: 1px solid #eee;
+    align-items: stretch;
+}
+
+.modal-key {
+    min-width: 200px;
+    width: 14%;
+    padding: .5em .5em .5em 1em;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+}
+
+.modal-value {
+    width: 25%;
+    padding: .5em;
+    padding-left: 1em;
+}
+
+.modal-value:focus-within {
+    background-color: #EEE;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#password {
+    -webkit-text-security: disc;
+    -webkit-appearance: textfield;
+    cursor: auto;
+}
+
+.checkbox-plate {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.checkbox {
+    appearance: auto;
+    margin-right: 1em;
+}
