@@ -249,8 +249,9 @@ hr.horizontal {
     text-align: center;
 }
 
-.others {
+.network-and-power-plate {
     display: flex;
+    width: 100%;
 }
 
 #Summary-Rear {
@@ -260,6 +261,28 @@ hr.horizontal {
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
+}
+
+.temperature-and-rpm-plate {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.temperature-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.fan-rpm-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .Plate-Footer {

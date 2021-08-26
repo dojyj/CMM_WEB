@@ -4,6 +4,7 @@
     <title>CMM_WEB</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/chart.css">
 </head>
 <body>
     <div class="container">
@@ -143,7 +144,7 @@
                             </ul>
                         </div>
                         <hr class="horizontal"/>
-                        <div class="others">
+                        <div class="network-and-power-plate">
                             <div class="network-box">
                                 <div class="device-name">lan</div>
                                 <ul>
@@ -156,7 +157,20 @@
                                 <progress value="350" max="1000"></progress>
                                 <div class="device-name">power #2</div>
                                 <progress value="350" max="1000"></progress>
-                            </div>    
+                            </div>
+                        </div>
+                        <hr class="horizontal"/>
+                        <div class="temperature-and-rpm-plate">
+                            <div class="temperature-box">
+                                <div class="device-name">temperature</div>
+                            </div>
+                            <div class="fan-rpm-box">
+                                <div class="device-name">fan rpm</div>
+                                <div class="chart-div">
+                                    <canvas id="thermal-chart" width="150px" height="100px"></canvas>
+                                    <script type="text/javascript" src="/controller/cmmLogController.js"></script>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
