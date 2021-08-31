@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
 </head>
 <body>
     <div class="container">
@@ -52,7 +53,7 @@
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
-                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/assetTagInfo.html'">- Chassis Asset Tag</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
                 </dt>
                 <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
@@ -63,38 +64,128 @@
             <div class ="Main-Plate">
                 <div class="Plate">
                     <div class="Plate-Header">
-                        <h2>CMM Network Summary</h2>
+                        <h2>CMM Network Setting</h2>
                     </div>
                     <div class="Plate-Body" id="table-plate">
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Network Summary</p>
+                                <p>Network Interface Configuration</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
+                                    <div class="table-key">Interface Name</div>
+                                    <div class="select-box">
+                                        <select name="ETH-SELECT"></select>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
+                                    <div class="table-key">Enable/Disable</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="ethernetEnable"/>
+                                        <label for="ethernetEnable"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
+                                    <div class="table-key">MAC Address</div>
+                                    <div contenteditable="true" class="table-value" id="macAddress"></div>    
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>IPv4 Configuration</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Obtain an IP address Automatically</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="ipv4UseDHCP"/>
+                                        <label for="ipv4UseDHCP"><span>Use DHCP</span></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">IPv4 Address</div>
+                                    <div contenteditable="true" class="table-value" id="ipv4Address"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Subnet Mask</div>
+                                    <div contenteditable="true" class="table-value" id="ipv4SubnetMask"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Default Gateway</div>
+                                    <div contenteditable="true" class="table-value" id="ipv4DefaultGateway"></div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>IPv6 Configuration</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">IPv6 Enable</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="ipv6Enable" onclick="return false;"/>
+                                        <label for="ipv6Enable"><span>Enable</span></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Obtain an IP address Automatically</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="ipv6UseDHCP"/>
+                                        <label for="ipv6UseDHCP"><span>Use DHCP(Stateful)</span></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">IPv6 Address</div>
+                                    <div contenteditable="true" class="table-value" id="ipv6Address"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Subnet Prefix Length</div>
+                                    <div class="table-value" id="ipv6SubnetPrefixLength"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Default Gateway</div>
+                                    <div class="table-value" id="ipv6DefaultGateway"></div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>VLAN Configuration</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">VLAN Enable</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="vlanEnable"/>
+                                        <label for="vlanEnable"><span>Enable</span></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">VLAN ID</div>
+                                    <div contenteditable="true" class="table-value" id="vlanId"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">VLAN Priority</div>
+                                    <div contenteditable="true" class="table-value" id="vlanPriority"></div>    
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="Plate-Footer">
+                        <button class="save" onclick="networkSaveHandler()">Save</button>
+                        <button class="clear" onclick="networkClearHandler()">Clear</button>
+                    </div>
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/networkConfigurationController.js"></script>
 </body>
 
 </html>

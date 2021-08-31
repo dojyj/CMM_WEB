@@ -53,7 +53,7 @@
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
-                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/assetTagInfo.html'">- Chassis Asset Tag</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
                 </dt>
                 <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
@@ -76,22 +76,22 @@
                                 <div class="table-row">
                                     <div class="table-key">Host is currently</div>
                                     <div class="radio-option-plate">
-                                        <div class="radio-option"><input type="radio" value="reset"/> Reset server</div>
-                                        <div class="radio-option"><input type="radio" value="power-off"/>Power Off Server</div>
-                                        <div class="radio-option"><input type="radio" value="power-off-acpi"/>Power Off Server - ACPI Power Off</div>
-                                        <div class="radio-option"><input type="radio" value="power-on"/>Power On Server</div>
+                                        <div class="radio-option"><input name="power-radio-btn" type="radio" value="GracefulRestart"/> Reset server</div>
+                                        <div class="radio-option"><input name="power-radio-btn" type="radio" value="GracefulShutdown"/>Power Off Server</div>
+                                        <div class="radio-option"><input name="power-radio-btn" type="radio" value="ForceOff"/>Power Off Server - ACPI Power Off</div>
+                                        <div class="radio-option"><input name="power-radio-btn" type="radio" value="On"/>Power On Server</div>
                                     </div>    
                                 </div>
                             </div>
                         </div>
                         <div class="Plate-Footer">
-                            <button class="save">Action</button>
+                            <button class="save" onclick="powerManagementHandler()">Action</button>
                         </div>
                     </div>    
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/powerManagementController.js"></script>
 </body>
-
 </html>

@@ -53,7 +53,7 @@
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
-                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/assetTagInfo.html'">- Chassis Asset Tag</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
                 </dt>
                 <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
@@ -70,36 +70,79 @@
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Chassis Info</p>
+                                <p>Computer System Information</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Host Name</div>
+                                    <div class="table-value" id="systemHostName"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">System Type</div>
+                                    <div class="table-value" id="systemType"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">UUID</div>
+                                    <div class="table-value" id="systemUUID"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Part Number</div>
+                                    <div class="table-value" id="systemPartNumber"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Serial Number</div>
+                                    <div class="table-value" id="systemSerialNumber"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Manufacturer</div>
+                                    <div class="table-value" id="systemManufacturer"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Model</div>
+                                    <div class="table-value" id="systemModel"></div>    
                                 </div>
                             </div>
                         </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>Chassis Information</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Num</div>
+                                    <div class="select-box">
+                                        <select name="CHASSIS-SELECT">
+                                        </select>
+                                    </div>                    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Type</div>
+                                    <div class="table-value" id="chassisType"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Part Number</div>
+                                    <div class="table-value" id="chassisPartNumber"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Serial</div>
+                                    <div class="table-value" id="chassisSerial"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Manufacturer</div>
+                                    <div class="table-value" id="chassisManufacturer"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Model</div>
+                                    <div class="table-value" id="chassisModel"></div>    
+                                </div>
+                            </div>
                         </div>
                     </div>    
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/chassisSummaryController.js"></script>
 </body>
-
 </html>

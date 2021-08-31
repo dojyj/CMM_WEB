@@ -53,7 +53,7 @@
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
-                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/assetTagInfo.html'">- Chassis Asset Tag</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
                 </dt>
                 <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
@@ -64,42 +64,63 @@
             <div class ="Main-Plate">
                 <div class="Plate">
                     <div class="Plate-Header">
-                        <h2>Chassis AssetTag Setting</h2>
+                        <h2>AssetTag Information</h2>
                     </div>
                     <div class="Plate-Body" id="table-plate">
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>AssetTag</p>
+                                <p>System</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Asset Tag</div>
+                                    <div contenteditable="true" class="table-value" id="systemAssetTag"></div>    
                                 </div>
                             </div>
                         </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>Chassis</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Chassis Num</div>
+                                    <div class="select-box">
+                                        <select name="CHASSIS-SELECT"></select>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Asset Tag</div>
+                                    <div contenteditable="true" class="table-value" id="chassisAssetTag"></div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>Drive</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Drive Num</div>
+                                    <div class="select-box">
+                                        <select name="DRIVE-SELECT"></select>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Asset Tag</div>
+                                    <div contenteditable="true" class="table-value" id="driveAssetTag"></div>    
+                                </div>
+                            </div>
                         </div>
                     </div>    
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/assetTagInfoController.js"></script>
 </body>
 
 </html>

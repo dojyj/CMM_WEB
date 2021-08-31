@@ -5,6 +5,8 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+
 </head>
 <body>
     <div class="container">
@@ -52,7 +54,7 @@
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
-                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/chassisAssetTagSetting.html'">- Chassis Asset Tag</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/assetTagInfo.html'">- Chassis Asset Tag</div>
                     <div class="navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
                 </dt>
                 <div onclick="location.href='/view/diagnosticOptions.html'" style="cursor: pointer;" class="navi-box">Diagnostic Options</div>
@@ -69,32 +71,69 @@
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>DNS Setting</p>
+                                <p>Host Configuration</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
+                                    <div class="table-key">Host Name</div>
+                                    <div contenteditable="true" class="table-value" id="hostname"></div>    
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>Domain Name Configuration</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Domain Name</div>
+                                    <div contenteditable="true" class="table-value" id="domainname"></div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>IPv4 Domain Name Server Configuration</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Preferred DNS Server</div>
+                                    <div contenteditable="true" class="table-value" id="ipv4prefer"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Alternate DNS Server</div>
+                                    <div contenteditable="true" class="table-value" id="ipv4alter"></div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>IPv6 Domain Name Server Configuration</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Preferred DNS Server</div>
+                                    <div contenteditable="true" class="table-value" id="ipv6prefer"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Alternate DNS Server</div>
+                                    <div contenteditable="true" class="table-value" id="ipv6alter"></div>    
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="Plate-Footer">
+                        <button class="save" onclick="dnsSaveHandler()">Save</button>
+                        <button class="clear" onclick="dnsClearHandler()">Clear</button>
+                    </div>
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/networkDNSController.js"></script>
 </body>
 
 </html>
