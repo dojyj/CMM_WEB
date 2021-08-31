@@ -52,7 +52,6 @@ function modal(id) {
 
     // close 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
     modal.querySelector('.modal-close-btn').addEventListener('click', function close() {
-        console.log("close..");
         bg.remove();
         modal.style.display = 'none';
         modal.querySelector('.modal-close-btn').removeEventListener('click', close);
@@ -78,10 +77,9 @@ function modal(id) {
             Enabled: newAccount.children[4].querySelector("#enable-user").checked
         }
 
-        await fetchAPI.post("redfish/v1/AccountService/Accounts", body)
+        await fetchAPI.post("/redfish/v1/AccountService/Accounts", body)
         .then(json => {
             console.log(json);
-        }).then(()=>{
             init();
         }).catch(err => {
             console.log(err);
@@ -123,7 +121,7 @@ function accountDeleteHandler() {
     if (userId == "root")
         userId = "1";
     
-    fetchAPI.delete(`redfish/v1/AccountService/Accounts/${userId}`)
+    fetchAPI.delete(`/redfish/v1/AccountService/Accounts/${userId}`)
     .then(json => {
         console.log(json);
     }).then(() => {
@@ -212,7 +210,6 @@ async function update_account_list() {
                 prev : json.RoleId
             }
             accountObjArray[parseInt(id) - 1] = accountObj;
-            console.log("a");
         }).catch(err => {
             console.log(err);
         });
