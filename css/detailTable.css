@@ -24,7 +24,7 @@ input[type="text"], input[type="password"] {
 }
 
 .detail-table {
-    min-height: 256px;
+    min-height: 64px;
     width: 100%;
     display: flex;
     margin-bottom: 1em;
@@ -77,12 +77,15 @@ input[type="text"], input[type="password"] {
     background-color: #eee;
     display: flex;
     align-items: center;
+    font-size: 0.8em;
+    font-weight: bold;
 }
 
 .table-value {
-    width: 14%;
+    width: 40%;
     padding: .5em;
     padding-left: 1em;
+    font-size: 0.8em;
 }
 
 .table-value:focus-within {
@@ -127,3 +130,18 @@ input[type="text"], input[type="password"] {
     margin-right: 0.5em;
 }
 
+.checkbox-plate {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.checkbox-plate > input {
+    appearance: auto;
+}
+
+.table-row > .checkbox-plate {
+    margin-left: .5em;
+    font-size: .9em;
+}

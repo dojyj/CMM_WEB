@@ -28,8 +28,8 @@ button {
 }
 
 button:active,
-button:hover,
-button:focus {
+button:hover
+{
   background: var(--button-hover-bg-color);
   outline: 0;
 }

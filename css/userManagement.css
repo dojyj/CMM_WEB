@@ -128,11 +128,7 @@ div.previlege {
     cursor: auto;
 }
 
-.checkbox-plate {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+.modal-body > .checkbox-plate {
     margin-top: 1em;
 }
 
