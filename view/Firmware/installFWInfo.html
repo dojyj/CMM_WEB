@@ -33,7 +33,7 @@
                 </dt>
                 <dt class="menu-control">
                     <div class="navi-box">Firmware</div>
-                    <div class="cur-navi-box-sub" onclick="location.href='/view/Firmware/installFWInfo.html'">- Install F/W Info</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/Firmware/installFWInfo.html'">- Installed F/W Info</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/Firmware/updateFW.html'">- F/W Update</div>                    
                 </dt>
                 <dt class="menu-control">
@@ -64,42 +64,87 @@
             <div class ="Main-Plate">
                 <div class="Plate">
                     <div class="Plate-Header">
-                        <h2>Install Firmware Info</h2>
+                        <h2>Installed F/W Information</h2>
                     </div>
                     <div class="Plate-Body" id="table-plate">
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>F/W Info</p>
+                                <p>KETI-CMM</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Version</div>
+                                    <div class="table-value" id="cmmVersion"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Manufacturer</div>
+                                    <div class="table-value" id="cmmManufacturer"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Release Date</div>
+                                    <div class="table-value" id="cmmReleaseDate"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Lowest Supported Version</div>
+                                    <div class="table-value" id="cmmLowestSupportedVersion"></div>    
                                 </div>
                             </div>
                         </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>KETI-WEB</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Version</div>
+                                    <div class="table-value" id="webVersion"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Manufacturer</div>
+                                    <div class="table-value" id="webManufacturer"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Release Date</div>
+                                    <div class="table-value" id="webReleaseDate"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Lowest Supported Version</div>
+                                    <div class="table-value" id="webLowestSupportedVersion"></div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>KETI-HA</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Version</div>
+                                    <div class="table-value" id="haVersion"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Manufacturer</div>
+                                    <div class="table-value" id="haManufacturer"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Release Date</div>
+                                    <div class="table-value" id="haReleaseDate"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Lowest Supported Version</div>
+                                    <div class="table-value" id="haLowestSupportedVersion"></div>    
+                                </div>
+                            </div>
                         </div>
                     </div>    
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/installFWInfoController.js"></script>
 </body>
 
 </html>

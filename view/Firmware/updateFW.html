@@ -34,7 +34,7 @@
                 </dt>
                 <dt class="menu-control">
                     <div class="navi-box">Firmware</div>
-                    <div class="cur-navi-box-sub" onclick="location.href='/view/Firmware/installFWInfo.html'">- Install F/W Info</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/Firmware/installFWInfo.html'">- Installed F/W Info</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/Firmware/updateFW.html'">- F/W Update</div>                    
                 </dt>
                 <dt class="menu-control">
@@ -76,27 +76,34 @@
                             <div class="table-body">
                                 <div class="table-row">
                                     <div class="table-key">Share host</div>
-                                    <div contenteditable="true" class="table-value"></div>    
+                                    <div contenteditable="true" class="table-value" id="host" placeholder="ex) http://127.0.0.1"></div>    
                                 </div>
                                 <div class="table-row">
                                     <div class="table-key">Path to Image</div>
-                                    <div contenteditable="true" class="table-value"></div>    
+                                    <div contenteditable="true" class="table-value" id="path"></div>    
                                 </div>
                                 <div class="table-row">
                                     <div class="table-key">User (optional)</div>
-                                    <div contenteditable="true" class="table-value"></div>    
+                                    <div contenteditable="true" class="table-value" id="user"></div>    
                                 </div>
                                 <div class="table-row">
                                     <div class="table-key">password (optional)</div>
-                                    <div contenteditable="true" class="table-value"></div>    
+                                    <div contenteditable="true" class="table-value" id="password"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Write Protect</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="writeProtect"/>
+                                        <label for="writeProtect"><span>Enable</span></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="Plate-Footer">
-                            <button class="clear">Refresh Status</button>
-                            <button class="clear">File Browse</button>
-                            <button class="save">Mount</button>
-                            <button class="save">Unmount</button>
+                            <button class="clear" onclick="refreshHandler()">Refresh Status</button>
+                            <!-- <button class="clear">File Browse</button> -->
+                            <button class="save" onclick="mountHandler()">Mount</button>
+                            <button class="save" onclick="unmountHandler()">Unmount</button>
                         </div>
                     </div>    
                     <div class="Plate-Body" id="table-plate">
@@ -111,12 +118,16 @@
                                 <div class="create-time">Create Time</div>
                                 <div class="name">Name</div>
                             </div>
+                            <div class="iso-image-table-body">
+
+                            </div>
                         </div>
                     </div>    
                 </div>
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/updateFWController.js"></script>
 </body>
 
 </html>
