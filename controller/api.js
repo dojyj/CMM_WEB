@@ -1,4 +1,4 @@
-const host = "http://10.0.6.107:80";
+import { host } from "../ENV.js";
 
 export const fetchAPI = {
     get : (path) => fetch(`${host}${path}`),
