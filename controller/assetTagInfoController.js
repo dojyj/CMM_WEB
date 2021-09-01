@@ -67,12 +67,12 @@ async function getDriveInfo(drive) {
 }
 
 async function init() {
-    await getSystemInfo();
+    getSystemInfo();
 
     const chassis = await getResource(CMMResourceURI.CHASSIS);
     chassisCollection = chassis.Members;
     curChassisNum = 0;
-    await getChassisInfo(chassisCollection[curChassisNum]["@odata.id"]);
+    getChassisInfo(chassisCollection[curChassisNum]["@odata.id"]);
     
     const drive = await getResource(`/redfish/v1/Chassis/${curChassisNum + 1}/Storage/Drives`);
     driveCollection = drive.Members;

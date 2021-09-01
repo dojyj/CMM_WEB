@@ -61,8 +61,8 @@ async function getFWInfo() {
     console.log(fwInventory);
     fwCollection = fwInventory.Members;
 
-    await getCMMInfo(fwCollection[0]["@odata.id"]);
-    await getWEBInfo(fwCollection[1]["@odata.id"]);
+    getCMMInfo(fwCollection[0]["@odata.id"]);
+    getWEBInfo(fwCollection[1]["@odata.id"]);
     getHAInfo(fwCollection[2]["@odata.id"]);
 }
 

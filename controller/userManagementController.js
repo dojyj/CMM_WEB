@@ -1,8 +1,9 @@
 import { fetchAPI } from "./api.js";
+import { CMMResourceURI, getResource } from "./getResource.js";
 
 const userTableBody = document.querySelector(".user-table-body");
 
-let accountArray = new Array();
+let accountArray = [];
 let selectedUserId;
 
 function onlyOneCheckbox(id) {
@@ -176,43 +177,18 @@ function remove_account_list() {
 async function update_account_list() {
     let accountObjArray = new Array(accountArray.length);
 
-    // // 직렬적 처리
-    // for (const path of accountArray){
-    //     await fetchAPI.get(path)
-    //     .then(res => {
-    //         return res.json();
-    //     }).then(json => {
-    //         const accountObj = {
-    //             userId : json.Id,
-    //             name : json.UserName,
-    //             access : json.Enabled,
-    //             prev : json.RoleId
-    //         }
-    //         addAccountList(accountObj);
-    //     }).catch(err => {
-    //         console.log(err);
-    //     });
-    // }
-
-    // 병렬적 처리
-
-    const promise = accountArray.map(async (path) => {
-        await fetchAPI.get(path)    
-        .then(res => {
-            return res.json();
-        }).then(json => {
-            const id = (json.Id == "root") ? "1" : json.Id; 
-            const accountObj = {
-                id : id,
-                userId : json.Id,
-                name : json.UserName,
-                access : json.Enabled,
-                prev : json.RoleId
-            }
-            accountObjArray[parseInt(id) - 1] = accountObj;
-        }).catch(err => {
-            console.log(err);
-        });
+    const promise = accountArray.map(async (user) => {
+        const accountInfo = await getResource(user["@odata.id"]);
+        
+        const id = (accountInfo.Id == "root") ? "1" : accountInfo.Id; 
+        const accountObj = {
+            id : id,
+            userId : accountInfo.Id,
+            name : accountInfo.UserName,
+            access : accountInfo.Enabled,
+            prev : accountInfo.RoleId
+        }
+        accountObjArray[parseInt(id) - 1] = accountObj;
     })
 
     await Promise.all(promise);
@@ -224,26 +200,14 @@ async function update_account_list() {
 async function get_account_array() {
     remove_account_list();
 
-    await fetchAPI.get("/redfish/v1/AccountService/Accounts")
-    .then(res=>{
-        return res.json();
-    }).then(json => {
-        const cnt = json["Members@odata.count"];
-        for (let i = 0; i < cnt; i++){
-            accountArray.push(json.Members[i]["@odata.id"]);
-        }
-    }).catch(err => {
-        console.log(err)
-    });
+    const accountInfo = await getResource(CMMResourceURI.ACCOUNTS);
+    console.log(accountInfo);
+    accountArray = accountInfo.Members;
 };
 
-function init() {
-    get_account_array()
-    .then(() => {
-        update_account_list();
-    }).catch(err => {
-        console.log(err);
-    });
+async function init() {
+    await get_account_array();
+    update_account_list();
 };
 
 init();

@@ -1,4 +1,5 @@
 import { fetchAPI } from "./api.js";
+import { CMMResourceURI, getResource } from "./getResource.js";
 
 const hostname = document.getElementById("hostname");
 const domainname = document.getElementById("domainname");
@@ -63,12 +64,8 @@ function paintConfig(DNSObj) {
 }
 
 async function getDNSConfig() {
-    await fetchAPI.get("/redfish/v1/Managers/1/EthernetInterfaces/NIC")
-    .then(res => {
-        return res.json();
-    }).then(json => {
-        paintConfig(json);
-    })
+    const dnsInfo = await getResource("/redfish/v1/Managers/1/EthernetInterfaces/NIC");
+    paintConfig(dnsInfo);
 }
 
 function init() {
