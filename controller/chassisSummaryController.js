@@ -37,11 +37,11 @@ function paintChassis({...chassisObj}) {
     }
     chassisSelect.options.selectedIndex = curChassisNum;
 
-    chassisType.innerText = chassisObj.ChassisType ?? "";
-    chassisPartNumber.innerText = chassisObj.PartNumber ?? "";
-    chassisSerial.innerText = chassisObj.SerialNumber ?? "";
-    chassisManufacturer.innerText = chassisObj.Manufacturer ?? "";
-    chassisModel.innerText = chassisObj.Model ?? "";
+    chassisType.innerText = ChassisType ?? "";
+    chassisPartNumber.innerText = PartNumber ?? "";
+    chassisSerial.innerText = SerialNumber ?? "";
+    chassisManufacturer.innerText = Manufacturer ?? "";
+    chassisModel.innerText = Model ?? "";
 }
 
 function paintSystem({...systemObj}) {
