@@ -145,26 +145,26 @@ function paintConfig(NetworkObj) {
     }
     interfaceSelect.options.selectedIndex = curEthNum;
     
-    ethernetEnable.checked = (NetworkObj.Status.State == "Enabled") ? true : false;
-    macAddress.innerText = NetworkObj.MACAddress;
+    ethernetEnable.checked = NetworkObj.InterfaceEnabled ?? false;
+    macAddress.innerText = NetworkObj.MACAddress ?? "";
     
     if (NetworkObj.IPv4Addresses.length != 0){
-        ipv4UseDHCP.checked = NetworkObj.DHCPv4.DHCPEnabled;
-        ipv4Address.innerText = NetworkObj.IPv4Addresses[0].Address;
-        ipv4SubnetMask.innerText = NetworkObj.IPv4Addresses[0].SubnetMask;
-        ipv4DefaultGateway.innerText = NetworkObj.IPv4Addresses[0].Gateway;
+        ipv4UseDHCP.checked = NetworkObj.DHCPv4.DHCPEnabled ?? false;
+        ipv4Address.innerText = NetworkObj.IPv4Addresses[0].Address ?? "";
+        ipv4SubnetMask.innerText = NetworkObj.IPv4Addresses[0].SubnetMask ?? "";
+        ipv4DefaultGateway.innerText = NetworkObj.IPv4Addresses[0].Gateway ?? "";
     }
     
     if (NetworkObj.IPv6Addresses.length != 0){
         ipv6Enable.checked = true;
         ipv6UseDHCP.checked = NetworkObj.DHCPv6.OperatingMode == ("Stateful" || "Stateless") ? true : false;
-        ipv6Address.innerText = NetworkObj.IPv6Addresses[0].Address;
-        ipv6SubnetPrefixLength.innerText = NetworkObj.IPv6Addresses[0].PrefixLength;
-        ipv6DefaultGateway.innerText = NetworkObj.IPv6DefaultGateway;
+        ipv6Address.innerText = NetworkObj.IPv6Addresses[0].Address ?? "";
+        ipv6SubnetPrefixLength.innerText = NetworkObj.IPv6Addresses[0].PrefixLength ?? "";
+        ipv6DefaultGateway.innerText = NetworkObj.IPv6DefaultGateway ?? "";
     }
 
-    vlanEnable.checked = NetworkObj.VLAN.VLANEnable;
-    vlanId.innerText = NetworkObj.VLAN.VLANId;
+    vlanEnable.checked = NetworkObj.VLAN.VLANEnable ?? false;
+    vlanId.innerText = NetworkObj.VLAN.VLANId ?? "";
     vlanPriority.innerText = "";
 }
 

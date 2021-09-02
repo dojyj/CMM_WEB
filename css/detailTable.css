@@ -141,6 +141,11 @@ input[type="text"], input[type="password"] {
     appearance: auto;
 }
 
+.checkbox {
+    appearance: auto;
+    margin-right: 1em;
+}
+
 .table-row > .checkbox-plate {
     margin-left: .5em;
     font-size: .9em;
