@@ -8,6 +8,7 @@ const user = document.getElementById("user");
 const password = document.getElementById("password");
 const writeProtect = document.getElementById("writeProtect");
 
+let virtualMediaList = [];
 let virtualMediaCollection = [];
 let postCtx = {};
 let temp_host;
@@ -66,13 +67,11 @@ async function unmountHandler() {
     const isoObj = document.getElementById(selectedId);
     const isoId = isoObj.parentElement.innerText;
     
-    virtualMediaCollection[isoId-1]["@odata.id"]
-
-    await fetchAPI.post("/redfish/v1/Managers/1/VirtualMedia/Actions/VirtualMedia.EjectMediaUSB", {});
+    await fetchAPI.post(`/redfish/v1/Managers/1/VirtualMedia/${virtualMediaList[isoId-1].Id}/Actions/VirtualMedia.EjectMedia`, {});
     init();
 }
 
-function paintVirtualMedia(virtualMediaList) {
+function paintVirtualMedia() {
     while (isoImageTableBody.firstChild)
         isoImageTableBody.removeChild(isoImageTableBody.firstChild);
 
@@ -115,16 +114,18 @@ function paintVirtualMedia(virtualMediaList) {
 }
 
 async function getVirtualMediaList() {
-    const virtualMediaList = [];
     const promise = virtualMediaCollection.map(async (virtualMedia) => {
         const virtualMediaInfo = await getResource(virtualMedia["@odata.id"]);
         virtualMediaList.push(virtualMediaInfo);        
     });
     await Promise.all(promise);
-    paintVirtualMedia(virtualMediaList);
+    paintVirtualMedia();
 }
 
 async function init() {
+    virtualMediaList = [];
+    virtualMediaList.length = 0;
+
     const virtualMedia = await getResource(CMMResourceURI.VIRTUALMEDIA);
     console.log(virtualMedia);
     virtualMediaCollection = virtualMedia.Members;
