@@ -57,7 +57,7 @@ function modal(id) {
         modal.style.display = 'none';
         modal.querySelector('.modal-close-btn').removeEventListener('click', close);
         
-        modal_init(id);
+        modal_init();
     });
 
     // add 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
@@ -85,7 +85,7 @@ function modal(id) {
         }).catch(err => {
             console.log(err);
         })
-        modal_init(id);
+        modal_init();
         modal.querySelector('.modal-add-btn').removeEventListener('click', add);
     });
     

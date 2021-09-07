@@ -55,8 +55,15 @@ hr.horizontal {
     background-color: black;
     margin: 0;
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
 }
 
+.header > .session-notify {
+    padding: 1em;
+}
 .container {
     /* height: 100%; */
     width: 100%;
@@ -290,3 +297,4 @@ hr.horizontal {
     margin-bottom: 1em;
     justify-content: center;
 }
+

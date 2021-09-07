@@ -1,0 +1,88 @@
+input {
+    box-shadow: none;
+    font-size: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    margin: 1em auto;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    background-color: #EEE;
+    text-align: center;
+    width: 50%;
+}
+
+input:focus {
+    background-color: cornflowerblue;
+}
+
+#login-form {
+    display: none;
+    height: 360px;
+    width: 500px;
+    padding: 20px 60px;
+    background-color: #fefefe;
+    border: 2px solid #888;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+div:empty:before {
+    content: attr(placeholder);
+    color: gray;
+    cursor:text;
+    -webkit-text-security: none;
+    
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #EEE;
+}
+.login-body {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2em;
+    width: 100%;
+}
+
+.login-body > .input-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input-form > label {
+    text-align: center;
+}
+
+.login-body > #username {
+    width: 30%;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 2em;
+    margin-left: 35%;
+    height: 2em;
+    border-bottom: 1px solid #DDD;
+}
+
+.login-body > #password {
+    margin-left: 35%;
+    margin-bottom: 2em;
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    height: 2em;
+    border-bottom: 1px solid #DDD;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: center;
+}
+
