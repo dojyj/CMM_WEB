@@ -1,11 +1,12 @@
 div.user-table-header {
     display: flex;
     justify-content: space-evenly;
-    width: 90%;
+    width: 88%;
     flex-direction: row;
     background-color: #999;
     color: #FFF;
     padding: 1%;
+    padding-left: 3%;
 }
 
 div.user-table-body {
@@ -24,6 +25,7 @@ div.user-table-row {
     flex-direction: row;
     border-bottom: 1px solid #CCC;
     padding: 2% 0 2% 0;
+    align-items: center;
 }
 div.user-id {
     display: flex;
@@ -46,6 +48,17 @@ div.previlege {
 }
 
 #user-add-modal {
+    display: none;
+    height: 350px;
+    width: 600px;
+    padding: 20px 60px;
+    background-color: #fefefe;
+    border: 2px solid #888;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+#change-user-info {
     display: none;
     height: 350px;
     width: 600px;
@@ -122,7 +135,7 @@ div.previlege {
     justify-content: space-evenly;
 }
 
-#password {
+.password-div {
     -webkit-text-security: disc;
     -webkit-appearance: textfield;
     cursor: auto;
@@ -134,5 +147,6 @@ div.previlege {
 
 .checkbox {
     appearance: auto;
-    margin-right: 1em;
+    width: auto;
+    margin-right: 1%;
 }

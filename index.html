@@ -13,7 +13,10 @@
     <div class="container">
         <div class="header">
             <h1><a href="/index.html" style="cursor: pointer; color: white;"/> KETI CMM WEB</a></h1>
-            <p class="session-notify">현재 세션 : </p>
+            <div class="session-plate">
+                <p class="session-notify">현재 세션 : </p>
+                <button class="save">Log Out</button>
+            </div>
         </div>
         <div class="web-body">
             <div id="login-form">
@@ -22,10 +25,10 @@
                 </div>
                 <div class="login-body">
                     <div class="input-form">
-                        <input id="username" placeholder="User Name" type="text">    
+                        <input id="login-username" placeholder="User Name" type="text">    
                     </div>
                     <div class="input-form">
-                        <input id="password" placeholder="Password" type="password">
+                        <input id="login-password-div" placeholder="Password" type="password">
                     </div>
                 </div>
                 <div class="login-footer">
@@ -199,5 +202,6 @@
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
 </body>
+
 
 </html>

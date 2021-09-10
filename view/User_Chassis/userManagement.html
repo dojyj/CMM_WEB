@@ -4,6 +4,7 @@
     <title>CMM_WEB</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/userManagement.css">
@@ -12,8 +13,28 @@
     <div class="container">
         <div class="header">
             <h1><a href="/index.html" style="cursor: pointer; color: white;"/> KETI CMM WEB</a></h1>
-        </div>
+            <div class="session-plate">
+                <p class="session-notify">현재 세션 : </p>
+                <button class="save">Log Out</button>
+            </div>
+        </div>        
         <div class="web-body">
+            <div id="login-form">
+                <div class="login-header">
+                    <h2>CMM WEB LOGIN</h2>
+                </div>
+                <div class="login-body">
+                    <div class="input-form">
+                        <input id="login-username" placeholder="User Name" type="text">    
+                    </div>
+                    <div class="input-form">
+                        <input id="login-password-div" placeholder="Password" type="password">
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <button class="save login-btn">Log In</button>
+                </div>
+            </div>
             <div class="left-navigator">
                 <div onclick="location.href='/index.html'" style="cursor: pointer;" class="navi-box">Dash Board</div>
                 <dt class="menu-control">
@@ -78,6 +99,7 @@
                                 <div class="name">User Name</div>
                                 <div class="access">User Access</div>
                                 <div class="previlege">Previlege</div>
+                                <div class="empty-block"></div>
                             </div>
                             <div class="user-table-body">
                             </div>
@@ -93,11 +115,11 @@
                                     </div>
                                     <div class="modal-row">
                                         <div class="modal-key">Password</div>
-                                        <div contenteditable="true" id="password" class="modal-value"></div>        
+                                        <div contenteditable="true" class="password-div modal-value"></div>        
                                     </div>
                                     <div class="modal-row">
                                         <div class="modal-key">Confirm Password</div>
-                                        <div contenteditable="true" id="password" class="modal-value"></div>        
+                                        <div contenteditable="true" class="password-div modal-value"></div>        
                                     </div>
                                     <div class="modal-row">
                                         <div class="modal-key">Previlege</div>
@@ -117,6 +139,42 @@
                                     <button class="modal-close-btn clear">close</button>    
                                 </div>
                             </div>
+                            <div class="modal" id="change-user-info">
+                                <div class="modal-header">
+                                    <img src="/images/table header.png" alt="table header icon">
+                                    <p>Change User Info</p>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-row">
+                                        <div class="modal-key">User Name</div>
+                                        <div contenteditable="true" id="username" class="modal-value"></div>        
+                                    </div>
+                                    <div class="modal-row">
+                                        <div class="modal-key">New Password</div>
+                                        <div contenteditable="true" id="new-password" class="password-div modal-value"></div>        
+                                    </div>
+                                    <div class="modal-row">
+                                        <div class="modal-key">Confirm Password</div>
+                                        <div contenteditable="true" id="confirm-password" class="password-div modal-value"></div>        
+                                    </div>
+                                    <div class="modal-row">
+                                        <div class="modal-key">Previlege</div>
+                                        <select name="PREV-SELECT" id="prev-select">
+                                            <option value="ReadOnly" selected="selected">ReadOnly</option>
+                                            <option value="Operator">Operator</option>
+                                            <option value="Administrator">Administrator</option>            
+                                        </select>        
+                                    </div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="enable-user"/>
+                                        <label for="enable-user"><span>enable user</span></label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="modal-add-btn save">apply</button>
+                                    <button class="modal-close-btn clear">close</button>    
+                                </div>
+                            </div>
                         </div>
                         <div class="Plate-Footer">
                             <button class="save" onclick="accountAddHandler()">Add</button>
@@ -128,6 +186,8 @@
         </div>
     </div>
     <script type="module" src="/controller/userManagementController.js"></script>
+    <script type="module" src="/controller/loginModal.js"></script>
 </body>
+
 
 </html>

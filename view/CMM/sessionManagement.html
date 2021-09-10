@@ -4,14 +4,37 @@
     <title>CMM_WEB</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
+    <link rel="stylesheet" type="text/css" href="/css/sessionManagement.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1><a href="/index.html" style="cursor: pointer; color: white;"/> KETI CMM WEB</a></h1>
-        </div>
+            <div class="session-plate">
+                <p class="session-notify">현재 세션 : </p>
+                <button class="save">Log Out</button>
+            </div>
+        </div>        
         <div class="web-body">
+            <div id="login-form">
+                <div class="login-header">
+                    <h2>CMM WEB LOGIN</h2>
+                </div>
+                <div class="login-body">
+                    <div class="input-form">
+                        <input id="login-username" placeholder="User Name" type="text">    
+                    </div>
+                    <div class="input-form">
+                        <input id="login-password-div" placeholder="Password" type="password">
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <button class="save login-btn">Log In</button>
+                </div>
+            </div>
             <div class="left-navigator">
                 <div onclick="location.href='/index.html'" style="cursor: pointer;" class="navi-box">Dash Board</div>
                 <dt class="menu-control">
@@ -69,25 +92,16 @@
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Session Info</p>
+                                <p>Session Information</p>
                             </div>
-                            <div class="table-body">
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div class="table-value">value</div>    
-                                </div>
+                            <div class="session-table-header">
+                                <div id="session-id">Session ID</div>
+                                <div id="session-name">Session Name</div>
+                                <div id="session-type">Session Type</div>
+                                <div id="session-prev">Previlege</div>
+                                <div class="empty-block"></div>
+                            </div>
+                            <div class="session-table-body">
                             </div>
                         </div>
                     </div>    
@@ -95,6 +109,9 @@
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/sessionManagementController.js"></script>
 </body>
+
 
 </html>

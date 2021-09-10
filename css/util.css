@@ -38,11 +38,17 @@ button:disabled {
 }
 
 button.save {
-    --button-bg-color: #f48000;
-    --button-hover-bg-color: #f49999;
+  --button-bg-color: #f48000;
+  --button-hover-bg-color: #f49999;
 }
 
 button.clear {
-    --button-bg-color: #28a745;
-    --button-hover-bg-color: #218838;
+  --button-bg-color: #28a745;
+  --button-hover-bg-color: #218838;
+}
+
+div.empty-block {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
 }

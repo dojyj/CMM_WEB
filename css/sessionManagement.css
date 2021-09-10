@@ -1,0 +1,48 @@
+div.session-table-header{
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-direction: row;
+    background-color: #999;
+    color: #FFF;
+    padding: 1%;
+}
+
+div.session-table-body{
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    padding: 1%;
+    background-color: #EEE;
+    flex-direction: column;
+}
+
+div.session-table-row {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: row;
+    border-bottom: 1px solid #CCC;
+    padding: 2% 0 2% 0;
+    align-items: center;
+}
+
+div#session-id {
+    display: flex;
+    flex: 1;
+}
+
+div#session-name {
+    display: flex;
+    flex: 1;
+}
+
+div#session-type {
+    display: flex;
+    flex: 1;
+}
+
+div#session-prev {
+    display: flex;
+    flex: 1;
+}

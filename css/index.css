@@ -57,13 +57,23 @@ hr.horizontal {
     color: white;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-direction: row;
+    height: 5em;
 }
 
-.header > .session-notify {
+.header > .session-plate {
     padding: 1em;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
 }
+
+.session-plate > button {
+    font-size: 0.8em;
+}
+
 .container {
     /* height: 100%; */
     width: 100%;

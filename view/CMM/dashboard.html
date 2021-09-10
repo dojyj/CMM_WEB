@@ -4,13 +4,34 @@
     <title>CMM_WEB</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1><a href="/index.html" style="cursor: pointer; color: white;"/> KETI CMM WEB</a></h1>
-        </div>
+            <div class="session-plate">
+                <p class="session-notify">현재 세션 : </p>
+                <button class="save">Log Out</button>
+            </div>
+        </div>        
         <div class="web-body">
+            <div id="login-form">
+                <div class="login-header">
+                    <h2>CMM WEB LOGIN</h2>
+                </div>
+                <div class="login-body">
+                    <div class="input-form">
+                        <input id="login-username" placeholder="User Name" type="text">    
+                    </div>
+                    <div class="input-form">
+                        <input id="login-password-div" placeholder="Password" type="password">
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <button class="save login-btn">Log In</button>
+                </div>
+            </div>
             <div class="left-navigator">
                 <div onclick="location.href='/index.html'" style="cursor: pointer;" class="navi-box">Dash Board</div>
                 <dt class="menu-control">
@@ -78,6 +99,8 @@
             </div>    
         </div>
     </div>
+    <script type="module" src="/controller/loginModal.js"></script>
 </body>
+
 
 </html>
