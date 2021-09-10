@@ -39,11 +39,15 @@ export const fetchAPI = {
         };
 
         const res = await fetch(url, options);
-        const data = await res.json();
-        if (res.ok) {
-            return data;
-        } else {
-            throw Error(data);
+        if (res.data == null || !Object.keys(res.data).length)
+            return res;
+        else {
+            const data = await res.json();
+            if (res.ok) {
+                return data;
+            } else {
+                throw Error(data);
+            }    
         }
     }, 
     delete : async (path, headers = {}) => {
@@ -55,14 +59,16 @@ export const fetchAPI = {
             }
         }
 
-        console.log(url);
-        console.log(options);
         const res = await fetch(url, options);
-        const data = await res.json();
-        if (res.ok) {
-            return data;
-        } else {
-            throw Error(data);
+        if (res.data == null || !Object.keys(res.data).length)
+            return res;
+        else {
+            const data = await res.json();
+            if (res.ok) {
+                return data;
+            } else {
+                throw Error(data);
+            }    
         }
     },
 }

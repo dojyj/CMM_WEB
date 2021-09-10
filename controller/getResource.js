@@ -14,5 +14,3 @@ export const getResource = async (url) => {
     const res = await fetchAPI.get(url);
     return await res.json();
 }
-
-

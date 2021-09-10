@@ -1,10 +1,14 @@
 import { fetchAPI } from "./api.js";
 import { CMMResourceURI, getResource } from "./getResource.js";
+import { authWatcher } from "./loginModal.js";
+import { modalFrame } from "./modal.js";
 
 const userTableBody = document.querySelector(".user-table-body");
 
 let accountArray = [];
+let accountObjArr;
 let selectedUserId;
+let patchCtx = {};
 
 function onlyOneCheckbox(id) {
     for (var i = 1; i <= accountArray.length; i++){
@@ -14,12 +18,84 @@ function onlyOneCheckbox(id) {
     selectedUserId = id;
 }
 
-function modal_init() {
+function patchAccount(evt) {
+    const thisModalBody = evt.currentTarget.modal;
+    const bg = document.getElementById('modal-bg');
+    const thisAccountInfo = thisModalBody.accountInfo;
+
+    const userName = thisModalBody.querySelector("#username");
+    const newPassword = thisModalBody.querySelector("#new-password");
+    const confirmPassword = thisModalBody.querySelector("#confirm-password");
+    const prevSelect = thisModalBody.querySelector("#prev-select");
+    const enableUser = thisModalBody.querySelector("#enable-user");
+
+    if (newPassword.innerText != confirmPassword.innerText){
+        alert("password is different");
+        return;
+    }
+
+    patchCtx = {
+        Name : userName.innerText,
+        Password : newPassword.innerText,
+        RoleId : prevSelect.value,
+        Enabled : enableUser.checked,
+    };
+
+    const headers = {
+        "X-Auth-Token" : authWatcher(),
+    };
+    
+    console.log(patchCtx);
+    console.log(headers);
+    fetchAPI.patch(`${CMMResourceURI.ACCOUNTS}/${thisAccountInfo.id}`,patchCtx,headers)
+    .then(res => {
+        console.log(res);
+        bg.remove();
+        thisModalBody.style.display = 'none';    
+        init();
+    })
+
+    addAccountModalInit(thisModalBody);
+}
+
+function passwordChangeModal(id) {
+    const modal = modalFrame(id);
+
+    // close 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+    const modalCloseBtn = modal.querySelector('.modal-close-btn');
+    modalCloseBtn.addEventListener('click', closeModal, false);
+    modalCloseBtn.modal = modal;
+ 
+    // add 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+    const modalPostBtn = modal.querySelector('.modal-add-btn');
+    modalPostBtn.addEventListener('click', patchAccount, false);
+    modalPostBtn.modal = modal;
+
+    return modal;
+}
+
+function changePassword(id) {
+    const thisAccountInfo = accountObjArr[id-1];
+    const thisModalBody = passwordChangeModal('change-user-info');
+    thisModalBody.accountInfo = thisAccountInfo;
+
+    const userName = thisModalBody.querySelector("#username");
+    const prevSelect = thisModalBody.querySelector("#prev-select");
+    const enableUser = thisModalBody.querySelector("#enable-user");
+
+    userName.innerText = thisAccountInfo.name;
+    prevSelect.value = thisAccountInfo.prev;
+    enableUser.checked = thisAccountInfo.access;
+}
+
+function addAccountModalInit(modal) {
     const default_select = "ReadOnly";
     const newAccount = document.querySelector(".modal-body");
 
-    for(let i = 0; i < 3; i++){
-        newAccount.children[i].querySelector(".modal-value").innerText = "";
+    for(let i = 0; i < newAccount.childElementCount; i++){
+        const modalValue = newAccount.children[i].querySelector(".modal-value");
+        if (modalValue != undefined && modalValue != null)
+            modalValue.innerText = "";
     }
 
     for (var i,j = 0; i = newAccount.children[3].querySelector("select").options[j]; j++){
@@ -30,87 +106,70 @@ function modal_init() {
     }   
     
     newAccount.children[4].querySelector("#enable-user").checked = false;
+
+    modal.querySelector('.modal-close-btn').removeEventListener('click', closeModal);
+    modal.querySelector('.modal-add-btn').removeEventListener('click', patchAccount);
+}
+
+function closeModal(evt) {
+    const modal = evt.currentTarget.modal;
+    const bg = document.getElementById('modal-bg');
+    
+    bg.remove();
+    modal.style.display = 'none';
+    addAccountModalInit(modal);
+}
+
+async function addAccount(evt) {
+    const modal = evt.currentTarget.modal;
+    const bg = document.getElementById('modal-bg');    
+    
+    bg.remove();
+    modal.style.display = 'none';
+
+    const accountInfo = new Array();
+    const newAccount = document.querySelector(".modal-body");
+    for(let i = 0; i < 3; i++){
+        accountInfo.push(newAccount.children[i].querySelector(".modal-value").innerText);
+    }
+
+    if (accountInfo[1] != accountInfo[2]){
+        alert("Password is different");
+        return;
+    }
+
+    const body = {
+        UserName: accountInfo[0],
+        Password: accountInfo[1],
+        RoleId: newAccount.children[3].querySelector("select").value,
+        Enabled: newAccount.children[4].querySelector("#enable-user").checked
+    };
+
+    await fetchAPI.post("/redfish/v1/AccountService/Accounts", body)
+    .then(json => {
+        console.log(json);
+        init();
+    }).catch(err => {
+        console.log(err);
+    })
+    addAccountModalInit(modal);
 }
 
 function modal(id) {
-    var zIndex = 9999;
-    var modal = document.getElementById(id);
-
-    // 모달 div 뒤에 희끄무레한 레이어
-    var bg = document.createElement('div');
-    bg.setStyle({
-        position: 'fixed',
-        zIndex: zIndex,
-        left: '0px',
-        top: '0px',
-        width: '100%',
-        height: '100%',
-        overflow: 'auto',
-        // 레이어 색갈은 여기서 바꾸면 됨
-        backgroundColor: 'rgba(0,0,0,0.4)'
-    });
-    document.body.append(bg);
+    const modal = modalFrame(id);
 
     // close 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
-    modal.querySelector('.modal-close-btn').addEventListener('click', function close() {
-        bg.remove();
-        modal.style.display = 'none';
-        modal.querySelector('.modal-close-btn').removeEventListener('click', close);
-        
-        modal_init();
-    });
-
+    const modalCloseBtn = modal.querySelector('.modal-close-btn');
+    modalCloseBtn.addEventListener('click', closeModal, false);
+    modalCloseBtn.modal = modal;
+ 
     // add 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
-    modal.querySelector('.modal-add-btn').addEventListener('click', async function add() {
-        bg.remove();
-        modal.style.display = 'none';
-        
-        const accountInfo = new Array();
-        const newAccount = document.querySelector(".modal-body");
-        for(let i = 0; i < 3; i++){
-            accountInfo.push(newAccount.children[i].querySelector(".modal-value").innerText);
-        }
+    const modalPostBtn = modal.querySelector('.modal-add-btn');
+    modalPostBtn.addEventListener('click', addAccount, false);
+    modalPostBtn.modal = modal;
 
-        const body = {
-            UserName: accountInfo[0],
-            Password: accountInfo[1],
-            RoleId: newAccount.children[3].querySelector("select").value,
-            Enabled: newAccount.children[4].querySelector("#enable-user").checked
-        }
-
-        await fetchAPI.post("/redfish/v1/AccountService/Accounts", body)
-        .then(json => {
-            console.log(json);
-            init();
-        }).catch(err => {
-            console.log(err);
-        })
-        modal_init();
-        modal.querySelector('.modal-add-btn').removeEventListener('click', add);
-    });
-    
-    modal.setStyle({
-        position: 'fixed',
-        display: 'flex',
-        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-
-        // 시꺼먼 레이어 보다 한칸 위에 보이기
-        zIndex: zIndex + 1,
-
-        // div center 정렬
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        msTransform: 'translate(-50%, -50%)',
-        webkitTransform: 'translate(-50%, -50%)'
-    });
+    return modal;
 }
-
-// Element 에 style 한번에 오브젝트로 설정하는 함수 추가
-Element.prototype.setStyle = function(styles) {
-    for (var k in styles) this.style[k] = styles[k];
-    return this;
-};
 
 function accountAddHandler() {
     modal('user-add-modal');
@@ -141,6 +200,8 @@ function addAccountList(accountObj) {
     const userName = document.createElement("div");
     const userAccess = document.createElement("div");
     const userPrev = document.createElement("div");
+    const btnDiv = document.createElement("div");
+    const passwordChangeBtn = document.createElement("button");
     
     selectBox.type = "checkbox";
     selectBox.className = "checkbox";
@@ -151,17 +212,26 @@ function addAccountList(accountObj) {
     userName.className = "name";
     userAccess.className = "access";
     userPrev.className = "previlege";
+    btnDiv.className = "empty-block";
     
-    userId.innerText = accountObj.userId;
+    userId.innerText = accountObj.id;
     userName.innerText = accountObj.name;
     userAccess.innerText = accountObj.access;
     userPrev.innerText = accountObj.prev;
+
+    passwordChangeBtn.className = "save";
+    passwordChangeBtn.innerText = "Change Password";
+    passwordChangeBtn.id = accountObj.id;
+    passwordChangeBtn.style.fontSize = "0.8em";
+    passwordChangeBtn.setAttribute("onclick", "changePassword(this.id);");
 
     div.appendChild(selectBox);
     div.appendChild(userId);
     div.appendChild(userName);
     div.appendChild(userAccess);
     div.appendChild(userPrev);
+    btnDiv.appendChild(passwordChangeBtn);
+    div.appendChild(btnDiv);
 
     userTableBody.appendChild(div);
 };
@@ -179,7 +249,6 @@ async function update_account_list() {
 
     const promise = accountArray.map(async (user) => {
         const accountInfo = await getResource(user["@odata.id"]);
-        
         const id = (accountInfo.Id == "root") ? "1" : accountInfo.Id; 
         const accountObj = {
             id : id,
@@ -191,6 +260,7 @@ async function update_account_list() {
         accountObjArray[parseInt(id) - 1] = accountObj;
     })
 
+    accountObjArr = accountObjArray;
     await Promise.all(promise);
     accountObjArray.forEach(obj => {
         addAccountList(obj);
@@ -214,3 +284,4 @@ init();
 window.accountAddHandler = accountAddHandler;
 window.accountDeleteHandler = accountDeleteHandler;
 window.onlyOneCheckbox = onlyOneCheckbox;
+window.changePassword = changePassword;
