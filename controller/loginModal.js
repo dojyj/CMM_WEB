@@ -2,8 +2,8 @@ import { fetchAPI } from "./api.js";
 import { CMMResourceURI, getResource } from "./getResource.js";
 
 const loginModal = document.getElementById("login-form");
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
+const userName = document.getElementById("login-username");
+const password = document.getElementById("login-password-div");
 const sessionNotify = document.querySelector(".session-notify");
 
 let sessionList = [];
@@ -22,7 +22,7 @@ Element.prototype.setStyle = function(styles) {
     return this;
 };
 
-function authWatcher() {
+export function authWatcher() {
     const token = localStorage["X-Auth-Token"];
     return token || false;
 }
@@ -42,21 +42,20 @@ async function init() {
 
     // #1 auth check (local storage auth token check)
     const authState = authWatcher();
-    console.log(authState);
+    
     // #2 check Session with token.
     if (authState !== false) {
         // #2-A if Session exists, return
         sessionList.forEach(sessionInfo => {
-            console.log(sessionInfo);
             if (sessionInfo.AuthToken == authState){
                 loginFlag = true;
                 sessionNotify.innerText = `현재 세션 : ${sessionInfo.UserName}`;
             }
         });
 
-        if (loginFlag)
+        if (loginFlag){
             return;
-        // #2-B if Session doesn't exists, local storage clear
+        }// #2-B if Session doesn't exists, local storage clear
         localStorage.clear();
     }
     
@@ -84,8 +83,6 @@ async function init() {
             Password : password.value,
         }
     
-        console.log(postCtx);
-    
         await fetchAPI.post("/redfish/v1/SessionService/Sessions", postCtx)
         .then(res => {
             const token = res.headers.get('X-Auth-Token');
@@ -96,7 +93,7 @@ async function init() {
         bg.remove();
         loginModal.style.display = 'none';
         loginModal.querySelector('.login-btn').removeEventListener('click', login);
-        init();   
+        location.href = '/index.html';
     });
     
     loginModal.setStyle({
