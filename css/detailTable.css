@@ -139,6 +139,7 @@ input[type="text"], input[type="password"] {
 
 .checkbox-plate > input {
     appearance: auto;
+    width: auto;
 }
 
 .checkbox {
@@ -147,11 +148,21 @@ input[type="text"], input[type="password"] {
 }
 
 .table-row > .checkbox-plate {
-    margin-left: .5em;
+    margin-left: 1em;
     font-size: .9em;
 }
 
 div:empty:before {
     content: attr(placeholder);
     color: gray;
+}
+
+.Table-Footer {
+    display: flex;
+    margin-bottom: 1em;
+    justify-content: center;
+}
+
+.Table-Footer > button {
+    font-size: 0.8em;
 }

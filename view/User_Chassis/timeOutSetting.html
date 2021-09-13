@@ -72,7 +72,6 @@
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/userManagement.html'">- User Account</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/ldapAndAdSetting.html'">- LDAP & Active Directory</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/networkTimeSetting.html'">- Date & Time / NTP Setting</div>
-                    <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/passwordSetting.html'">- Password Setting</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/timeOutSetting.html'">- Time out</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/assetTagInfo.html'">- Chassis Asset Tag</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/User_Chassis/cmmBackupAndRestore.html'">- CMM Backup and Restore</div>                    
@@ -91,37 +90,53 @@
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Timeout</p>
+                                <p>Session</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Service Name</div>
+                                    <div id="session-service-name" class="table-value"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Service Enabled</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="session-service-enabled"/>
+                                        <label for="session-service-enabled"><span>enable</span></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Default Timeout (sec)</div>
+                                    <div contenteditable="true" id="session-default-timeout" class="table-value"></div>    
+                                </div>
+                                <div class="Table-Footer">
+                                    <button class="save" onclick="sessionPatchHandler()">Apply</button>
+                                    <button class="clear" onclick="sessionClearHandler()">Clear</button>
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>HA</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
                                     <div class="table-key">key</div>
                                     <div contenteditable="true" class="table-value">value</div>    
                                 </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
                             </div>
+                            <div class="Table-Footer">
+                                <button class="save">Apply</button>
+                                <button class="clear">Clear</button>
+                            </div>        
                         </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
-                        </div>
-                    </div>    
+                    </div>
                 </div>
             </div>    
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/timeOutSettingController.js"></script>
 </body>
 
 
