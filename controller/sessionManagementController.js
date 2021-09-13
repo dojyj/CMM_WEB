@@ -48,7 +48,7 @@ function addList(obj) {
         const headers = {
             "X-Auth-Token" : token,
         };
-        fetchAPI.delete(CMMResourceURI.SESSIONSERVICE, headers)
+        fetchAPI.delete(CMMResourceURI.SESSIONS, headers)
         .then(setTimeout(() => {
             location.reload(); 
         }, 1200));        
@@ -91,7 +91,7 @@ function init_session_list() {
 async function get_session_list() {
     init_session_list();
 
-    const SessionCollection = await getResource(CMMResourceURI.SESSIONSERVICE);
+    const SessionCollection = await getResource(CMMResourceURI.SESSIONS);
     sessionList = SessionCollection.Members;
     console.log(sessionList);
 }

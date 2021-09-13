@@ -7,7 +7,8 @@ export const CMMResourceURI = {
     FIRMWAREINVENTORY : "/redfish/v1/UpdateService/FirmwareInventory",
     VIRTUALMEDIA : "/redfish/v1/Managers/1/VirtualMedia",
     ACCOUNTS : "/redfish/v1/AccountService/Accounts",
-    SESSIONSERVICE : "/redfish/v1/SessionService/Sessions",
+    SESSIONS : "/redfish/v1/SessionService/Sessions",
+    SESSIONSERVICE : "/redfish/v1/SessionService"
 }
 
 export const getResource = async (url) => {

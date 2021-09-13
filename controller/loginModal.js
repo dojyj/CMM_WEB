@@ -28,7 +28,7 @@ export function authWatcher() {
 }
 
 async function getSessionList() {
-    const sessionCollection = await getResource(CMMResourceURI.SESSIONSERVICE);
+    const sessionCollection = await getResource(CMMResourceURI.SESSIONS);
     const sessionMembers = sessionCollection.Members;
     for (let i = 0; i< sessionMembers.length; i++)
         sessionList.push(await getResource(sessionMembers[i]["@odata.id"]));
@@ -83,7 +83,7 @@ async function init() {
             Password : password.value,
         }
     
-        await fetchAPI.post("/redfish/v1/SessionService/Sessions", postCtx)
+        await fetchAPI.post(CMMResourceURI.SESSIONS, postCtx)
         .then(res => {
             const token = res.headers.get('X-Auth-Token');
             localStorage.setItem('X-Auth-Token', token);
