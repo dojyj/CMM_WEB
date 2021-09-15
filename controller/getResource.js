@@ -8,7 +8,8 @@ export const CMMResourceURI = {
     VIRTUALMEDIA : "/redfish/v1/Managers/1/VirtualMedia",
     ACCOUNTS : "/redfish/v1/AccountService/Accounts",
     SESSIONS : "/redfish/v1/SessionService/Sessions",
-    SESSIONSERVICE : "/redfish/v1/SessionService"
+    SESSIONSERVICE : "/redfish/v1/SessionService",
+    NETWORKPROTOCOL : "/redfish/v1/Managers/1/NetworkProtocol"
 }
 
 export const getResource = async (url) => {

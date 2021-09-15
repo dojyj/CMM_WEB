@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/networkTimeSetting.css">
 </head>
 <body>
     <div class="container">
@@ -94,26 +95,65 @@
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Date</div>
+                                    <input id="datepicker" type="date">    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Time</div>
+                                    <div class="time-table" id="time-row">
+                                        <div contenteditable="true" id="time-h" class="table-value" placeholder="hh"></div> 
+                                        <div contenteditable="true" id="time-m" class="table-value" placeholder="mm"></div> 
+                                        <div contenteditable="true" id="time-s" class="table-value" placeholder="ss"></div>        
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">UTC Timezone</div>
+                                    <div class="select-box" id="timezone">
+                                        <select name="Timezone-Select">
+                                            <option value="">GMT -12</option>
+                                            <option value="">GMT -11</option>
+                                            <option value="">GMT -10</option>
+                                            <option value="">GMT -9</option>
+                                            <option value="">GMT -8</option>
+                                            <option value="">GMT -7</option>
+                                            <option value="">GMT -6</option>
+                                            <option value="">GMT -5</option>
+                                            <option value="">GMT -4</option>
+                                            <option value="">GMT -3</option>
+                                            <option value="">GMT -2</option>
+                                            <option value="">GMT -1</option>
+                                            <option value="">GMT +0</option>
+                                            <option value="">GMT +1</option>
+                                            <option value="">GMT +2</option>
+                                            <option value="">GMT +3</option>
+                                            <option value="">GMT +4</option>
+                                            <option value="">GMT +5</option>
+                                            <option value="">GMT +6</option>
+                                            <option value="">GMT +7</option>
+                                            <option value="">GMT +8</option>
+                                            <option value="" selected="selected">GMT +9</option>
+                                            <option value="">GMT +10</option>
+                                            <option value="">GMT +11</option>
+                                            <option value="">GMT +12</option>
+                                        </select>
+                                    </div>                
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">NTP Servers</div>
+                                    <div class="select-box" id="ntp-servers">
+                                        <select name="NTP-Server-Select">
+                                        </select>
+                                    </div>                
+                                </div>
+                                <div class="checkbox-plate">
+                                    <input type="checkbox" class="checkbox" id="use-ntp"/>
+                                    <label for="use-ntp"><span>Automatically synchronize Date & Time with NTP Server</span></label>
                                 </div>
                             </div>
                         </div>
                         <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                            <button class="save" onclick="saveNTPSetting()">save</button>
+                            <button class="clear" onclick="clearNTPSetting()">clear</button>
                         </div>
                     </div>    
                 </div>
@@ -121,6 +161,7 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/networkTimeSettingController.js"></script>
 </body>
 
 
