@@ -60,10 +60,12 @@ hr.horizontal {
     align-items: center;
     flex-direction: row;
     height: 5em;
+    min-width: calc(1244px + 4%);
 }
 
 .header > .session-plate {
     padding: 1em;
+    padding-right: 2%;
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -232,7 +234,7 @@ hr.horizontal {
 .select-box {
     display: flex;
     justify-content: flex-end;
-    padding: 1%;
+    padding: .5em;
 }
 
 .cpu-memory-box {
