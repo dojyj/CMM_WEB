@@ -120,6 +120,7 @@ input[type="text"], input[type="password"] {
     width: calc(100% - 1.5em);
     border-bottom: 1px solid #EEE;
     padding-left: 1em;
+    align-items: center;
 }
 
 .radio-option-plate > div:last-child {
@@ -128,7 +129,9 @@ input[type="text"], input[type="password"] {
 
 .radio-option > input {
     appearance: auto;
+    margin: 0;
     margin-right: 0.5em;
+    width: 1em;
 }
 
 .checkbox-plate {
@@ -147,6 +150,7 @@ input[type="text"], input[type="password"] {
     appearance: auto;
     margin-right: 1em;
     margin-left: 0;
+    width: 1em;
 }
 
 .table-row > .checkbox-plate {
@@ -167,4 +171,10 @@ div:empty:before {
 
 .Table-Footer > button {
     font-size: 0.8em;
+}
+
+.disabled-div {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
 }

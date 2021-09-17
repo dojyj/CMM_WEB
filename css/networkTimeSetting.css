@@ -25,9 +25,3 @@ input[type="date"] {
     border: 1px solid #CCC;
     min-width: 4em;
 }
-
-.disabled-div {
-    pointer-events: none;
-    opacity: 0.4;
-    cursor: not-allowed;
-}

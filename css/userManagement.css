@@ -135,12 +135,6 @@ div.previlege {
     justify-content: space-evenly;
 }
 
-.password-div {
-    -webkit-text-security: disc;
-    -webkit-appearance: textfield;
-    cursor: auto;
-}
-
 .modal-body > .checkbox-plate {
     margin-top: 1em;
 }

@@ -310,3 +310,8 @@ hr.horizontal {
     justify-content: center;
 }
 
+.password-div {
+    -webkit-text-security: disc;
+    -webkit-appearance: textfield;
+    cursor: auto;
+}
