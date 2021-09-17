@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource, postResource } from "./Resource.js";
 
 const isoImageTableBody = document.querySelector(".iso-image-table-body");
 const host = document.getElementById("host");
@@ -58,8 +57,7 @@ async function mountHandler() {
     postCtx.Image = `${temp_host}:${temp_path}`;
     postCtx.Inserted = true;
 
-    console.log(postCtx);
-    await fetchAPI.post("/redfish/v1/Managers/1/VirtualMedia/Actions/VirtualMedia.InsertMediaUSB", postCtx);
+    await postResource("/redfish/v1/Managers/1/VirtualMedia/Actions/VirtualMedia.InsertMediaUSB", postCtx);
     init();
 }
 
@@ -67,7 +65,7 @@ async function unmountHandler() {
     const isoObj = document.getElementById(selectedId);
     const isoId = isoObj.parentElement.innerText;
     
-    await fetchAPI.post(`/redfish/v1/Managers/1/VirtualMedia/${virtualMediaList[isoId-1].Id}/Actions/VirtualMedia.EjectMedia`, {});
+    await postResource(`/redfish/v1/Managers/1/VirtualMedia/${virtualMediaList[isoId-1].Id}/Actions/VirtualMedia.EjectMedia`, {});
     init();
 }
 

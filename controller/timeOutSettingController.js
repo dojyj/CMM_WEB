@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource, patchResource } from "./Resource.js";
 
 const sessionServiceName = document.getElementById('session-service-name');
 const sessionServiceEnabled = document.getElementById('session-service-enabled');
@@ -26,9 +25,7 @@ function paintSessionInfo(...sessionInfo) {
 }
 
 async function sessionPatchHandler(){
-    console.log(sessionPatchCtx);
-    await fetchAPI.patch(CMMResourceURI.SESSIONSERVICE, sessionPatchCtx)
-    .then(res => {console.log(res);})
+    await patchResource(CMMResourceURI.SESSIONSERVICE, sessionPatchCtx);
     getSessionInfo();
 }
 

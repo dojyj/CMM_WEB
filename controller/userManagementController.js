@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, deleteResource, getResource, patchResource, postResource } from "./Resource.js";
 import { authWatcher } from "./loginModal.js";
 import { modalFrame } from "./modal.js";
 
@@ -45,9 +44,7 @@ function patchAccount(evt) {
         "X-Auth-Token" : authWatcher(),
     };
     
-    console.log(patchCtx);
-    console.log(headers);
-    fetchAPI.patch(`${CMMResourceURI.ACCOUNTS}/${thisAccountInfo.id}`,patchCtx,headers)
+    patchResource(`${CMMResourceURI.ACCOUNTS}/${thisAccountInfo.id}`,patchCtx,headers)
     .then(res => {
         console.log(res);
         bg.remove();
@@ -145,9 +142,8 @@ async function addAccount(evt) {
         Enabled: newAccount.children[4].querySelector("#enable-user").checked
     };
 
-    await fetchAPI.post("/redfish/v1/AccountService/Accounts", body)
-    .then(json => {
-        console.log(json);
+    await postResource(CMMResourceURI.ACCOUNTS, body)
+    .then(() => {
         init();
     }).catch(err => {
         console.log(err);
@@ -181,10 +177,8 @@ function accountDeleteHandler() {
     if (userId == "root")
         userId = "1";
     
-    fetchAPI.delete(`/redfish/v1/AccountService/Accounts/${userId}`)
-    .then(json => {
-        console.log(json);
-    }).then(() => {
+    deleteResource(`/redfish/v1/AccountService/Accounts/${userId}`)
+    .then(() => {
         init();
     }).catch(err => {
         console.log(err);

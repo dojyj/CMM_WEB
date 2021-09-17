@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource, patchResource } from "./Resource.js";
 
 const interfaceSelect = document.querySelector(".select-box > select");
 const ethernetEnable = document.getElementById("ethernetEnable");
@@ -122,8 +121,7 @@ window.onload = () => {
 }
 
 function networkSaveHandler() {
-    console.log(patchCtx);
-    fetchAPI.patch(networkInterface[curEthNum]["@odata.id"], patchCtx)
+    patchResource(networkInterface[curEthNum]["@odata.id"], patchCtx)
     .then(json => {
         console.log(json);
         getNetworkConfig(networkInterface[curEthNum]["@odata.id"]);

@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource, postResource,  deleteResource } from "./Resource.js";
 
 const loginModal = document.getElementById("login-form");
 const userName = document.getElementById("login-username");
@@ -25,6 +24,21 @@ Element.prototype.setStyle = function(styles) {
 export function authWatcher() {
     const token = localStorage["X-Auth-Token"];
     return token || false;
+}
+
+function logoutBtn() {
+    const token = authWatcher();
+    if (token){
+        const headers = {
+            "X-Auth-Token" : token,
+        }
+        localStorage.clear();
+
+        deleteResource(CMMResourceURI.SESSIONS, headers)
+        .then(setTimeout(() => {
+            location.reload();
+        }, 1200));
+    }
 }
 
 async function getSessionList() {
@@ -83,17 +97,19 @@ async function init() {
             Password : password.value,
         }
     
-        await fetchAPI.post(CMMResourceURI.SESSIONS, postCtx)
+        await postResource(CMMResourceURI.SESSIONS, postCtx)
         .then(res => {
             const token = res.headers.get('X-Auth-Token');
             localStorage.setItem('X-Auth-Token', token);
-        });
+        })
         
         // 로그인 완료 후
-        bg.remove();
-        loginModal.style.display = 'none';
-        loginModal.querySelector('.login-btn').removeEventListener('click', login);
-        location.href = '/index.html';
+        if (authWatcher() != null){
+            bg.remove();
+            loginModal.style.display = 'none';
+            loginModal.querySelector('.login-btn').removeEventListener('click', login);
+            location.href = '/index.html';
+        }
     });
     
     loginModal.setStyle({
@@ -114,3 +130,4 @@ async function init() {
 }
 
 init();
+window.logoutBtn = logoutBtn;

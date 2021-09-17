@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource, deleteResource} from "./Resource.js";
 
 const sessionTableBody = document.querySelector(".session-table-body");
 
@@ -48,7 +47,9 @@ function addList(obj) {
         const headers = {
             "X-Auth-Token" : token,
         };
-        fetchAPI.delete(CMMResourceURI.SESSIONS, headers)
+        localStorage.clear();
+
+        deleteResource(CMMResourceURI.SESSIONS, headers)
         .then(setTimeout(() => {
             location.reload(); 
         }, 1200));        

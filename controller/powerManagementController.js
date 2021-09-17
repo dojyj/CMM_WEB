@@ -1,4 +1,4 @@
-import { fetchAPI } from "./api.js";
+import { postResource } from "./Resource.js";
 
 const powerRadioBtns = document.getElementsByName("power-radio-btn");
 
@@ -12,11 +12,7 @@ function powerManagementHandler() {
         }
     }
 
-    console.log(resetType);
-    fetchAPI.post("/redfish/v1/Systems/1/Actions/ComputerSystem.Reset", resetType)
-    .then(res => {
-        console.log(res);
-    })
+    postResource("/redfish/v1/Systems/1/Actions/ComputerSystem.Reset", resetType);
 }
 
 window.powerManagementHandler = powerManagementHandler;

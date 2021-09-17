@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource } from "./Resource.js";
 
 const systemAssetTag = document.getElementById("systemAssetTag");
 const chassisAssetTag = document.getElementById("chassisAssetTag");

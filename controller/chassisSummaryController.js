@@ -1,4 +1,4 @@
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { CMMResourceURI, getResource } from "./Resource.js";
 
 let chassisCollection = [];
 let curChassisNum;

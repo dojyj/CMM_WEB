@@ -1,4 +1,4 @@
-import { CMMResourceURI, getResource } from "./getResource.js"
+import { CMMResourceURI, getResource } from "./Resource.js"
 
 const datePicker = document.getElementById("datepicker");
 
@@ -50,6 +50,7 @@ window.onload = () => {
         ntpServerUpdate();
     })
     useNTPCheck.addEventListener("change", function (e) {
+        ntpPatchCtx.NTPEnable = this.checked;
         ntpEnabled = this.checked;
         paintPlate();
     }, false);    

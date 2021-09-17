@@ -1,5 +1,4 @@
-import { fetchAPI } from "./api.js";
-import { CMMResourceURI, getResource } from "./getResource.js";
+import { getResource } from "./Resource.js";
 
 const hostname = document.getElementById("hostname");
 const domainname = document.getElementById("domainname");
@@ -40,8 +39,7 @@ window.onload = () => {
 }
 
 function dnsSaveHandler() {
-    console.log(patchCtx);
-    fetchAPI.patch("/redfish/v1/Managers/1/EthernetInterfaces/NIC", patchCtx)
+    patchCtx("/redfish/v1/Managers/1/EthernetInterfaces/NIC", patchCtx)
     .then(json => {
         console.log(json);
         init();
