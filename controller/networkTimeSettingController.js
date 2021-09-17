@@ -8,7 +8,8 @@ const timeM = document.getElementById("time-m");
 const timeS = document.getElementById("time-s");
 
 const timezone = document.getElementById("timezone");
-const ntpServers = document.getElementById("ntp-servers");
+const primaryNTPServer = document.getElementById("primary-ntp-server");
+const secondaryNTPServer = document.getElementById("secondary-ntp-server")
 const useNTPCheck = document.getElementById("use-ntp");
 
 let ntpServerList;
@@ -37,11 +38,17 @@ window.onload = () => {
         ntpPatchCtx.TimeZone = timezoneSelect.value;
         curTimeZone = timezoneSelect.selectedIndex;
     }, false);
-    ntpServers.addEventListener("change", function (e) {
-        const ntpSelect = e.currentTarget.querySelector("select");
-        ntpPatchCtx.CurrentNTPServer = ntpSelect.value;
-        curServerNum = ntpSelect.selectedIndex;
+    primaryNTPServer.addEventListener("change", function (e) {
+        const primaryNtpSelect = e.currentTarget.querySelector("select");
+        ntpPatchCtx.PrimaryNTPServer = primaryNtpSelect.value;
+        curServerNum = primaryNtpSelect.selectedIndex;
+        ntpServerUpdate();
     }, false);
+    secondaryNTPServer.addEventListener("change", function (e) {
+        const secondayNtpSelect = e.currentTarget.querySelector("select");
+        ntpPatchCtx.SecondaryNTPServer = secondayNtpSelect.value;
+        ntpServerUpdate();
+    })
     useNTPCheck.addEventListener("change", function (e) {
         ntpEnabled = this.checked;
         paintPlate();
@@ -61,6 +68,31 @@ function clearNTPSetting() {
     init();    
 }
 
+function ntpServerUpdate() {
+    const primaryNtpSelect = primaryNTPServer.querySelector("select");
+    primaryNtpSelect.options.length = 0;
+
+    for (let i = 0; i < ntpServerList.length; i++){
+        let option = document.createElement('option');
+        option.innerText = ntpServerList[i];
+        primaryNtpSelect.append(option);
+    }
+    primaryNtpSelect.options.selectedIndex = curServerNum;
+
+    const secondaryNtpSelect = secondaryNTPServer.querySelector("select");
+    secondaryNtpSelect.options.length = 0;
+    
+    for (let i = 0; i < ntpServerList.length; i++){
+        if (i == curServerNum)
+            continue;
+        else{
+            let option = document.createElement('option');
+            option.innerText = ntpServerList[i];
+            secondaryNtpSelect.append(option);
+        }
+    }
+}
+
 function paintPlate(){
     useNTPCheck.value = ntpEnabled;
     curServerNum = 0;
@@ -73,27 +105,23 @@ function paintPlate(){
     timeS.innerText = "";
 
     if (ntpEnabled){
-        ntpServers.classList.remove("disabled-div");
+        primaryNTPServer.classList.remove("disabled-div");
+        secondaryNTPServer.classList.remove("disabled-div");
         datePicker.classList.add("disabled-div");
         timeRow.classList.add("disabled-div");
         timezone.classList.add("disabled-div");
         timezone.querySelector("select").length = 0;
 
         // ntp server select only
-        const ntpSelect = ntpServers.querySelector("select");
-        ntpSelect.length = 0;
-        for (let i = 0; i < ntpServerList.length; i++){
-            let option = document.createElement('option');
-            option.innerText = ntpServerList[i];
-            ntpSelect.append(option);
-        }
-        ntpSelect.options.selectedIndex = curServerNum;
+        ntpServerUpdate();
     } else {
         datePicker.classList.remove("disabled-div");
         timeRow.classList.remove("disabled-div");
         timezone.classList.remove("disabled-div");
-        ntpServers.classList.add("disabled-div");
-        ntpServers.querySelector("select").length = 0;
+        primaryNTPServer.classList.add("disabled-div");
+        primaryNTPServer.querySelector("select").length = 0;
+        secondaryNTPServer.classList.add("disabled-div");
+        secondaryNTPServer.querySelector("select").length = 0;
 
         const timezoneSelect = timezone.querySelector("select");
         timezoneSelect.length = 0;
