@@ -14,7 +14,7 @@
             <h1><a href="/index.html" style="cursor: pointer; color: white;"/> KETI CMM WEB</a></h1>
             <div class="session-plate">
                 <p class="session-notify">현재 세션 : </p>
-                <button class="save">Log Out</button>
+                <button class="save" onclick="logoutBtn()">Log Out</button>
             </div>
         </div>        
         <div class="web-body">
@@ -84,71 +84,109 @@
             <div class ="Main-Plate">
                 <div class="Plate">
                     <div class="Plate-Header">
-                        <h2>LDAP Setting</h2>
+                        <h2>LDAP & Active Directory Setting</h2>
                     </div>
                     <div class="Plate-Body" id="table-plate">
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Setting</p>
+                                <p>LDAP</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">LDAP Service Enabled</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="LDAP-enable"/>
+                                        <label for="LDAP-enable"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Auth Over SSL</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="LDAP-use-ssl"/>
+                                        <label for="LDAP-use-ssl"><span>Use</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Port</div>
+                                    <div contenteditable="true" class="table-value" id="LDAP-port"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Server IP</div>
+                                    <div contenteditable="true" class="table-value" id="LDAP-ip"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">LDAP PassWord</div>
+                                    <div contenteditable="true" class="password-div table-value" id="LDAP-password"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Base Distinguished Name</div>
+                                    <div contenteditable="true" class="table-value" id="LDAP-base-dn"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Search base</div>
+                                    <div contenteditable="true" class="table-value" id="LDAP-search-base"></div>    
                                 </div>
                             </div>
+                            <div class="Plate-Footer">
+                                <button class="save" onclick="ldapSaveBtn()">save</button>
+                                <button class="clear" onclick="ldapClearBtn()">clear</button>
+                            </div>
                         </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
-                        </div>
-                    </div>    
-                </div>
-                <div class="Plate">
-                    <div class="Plate-Header">
-                        <h2>Active Directory Setting</h2>
-                    </div>
-                    <div class="Plate-Body" id="table-plate">
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Setting</p>
+                                <p>Active Directory</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Active Directory Service Enabled</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="AD-enable"/>
+                                        <label for="AD-enable"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Authentication Enabled</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="AD-auth-enable"/>
+                                        <label for="AD-auth-enable"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Auth Over SSL</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="AD-use-ssl"/>
+                                        <label for="AD-use-ssl"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Port</div>
+                                    <div contenteditable="true" class="table-value" id="AD-port"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Domain Name</div>
+                                    <div contenteditable="true" class="table-value" id="AD-domain-name"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">TIME OUT</div>
+                                    <div class="select-box">
+                                        <select name="ETH-SELECT" id="AD-timeout">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>    
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">DCS Address 1 (IP)</div>
+                                    <div contenteditable="true" class="table-value" id="AD-ip"></div>    
                                 </div>
                             </div>
-                        </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                            <div class="Plate-Footer">
+                                <button class="save" onclick="adSaveBtn()">save</button>
+                                <button class="clear" onclick="adSaveBtn()">clear</button>
+                            </div>
                         </div>
                     </div>    
                 </div>
@@ -156,6 +194,7 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/ldapAndAdSettingController.js"></script>
 </body>
 
 
