@@ -94,26 +94,25 @@
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Syslog Enable</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="syslog-service-enabled"/>
+                                        <label for="syslog-service-enabled"><span>enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Port</div>
+                                    <div contenteditable="true" id="syslog-port-number" class="table-value"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Syslog Server (ip)</div>
+                                    <div contenteditable="true" id="syslog-server" class="table-value"></div>    
                                 </div>
                             </div>
                         </div>
                         <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                            <button class="save" onclick="syslogPatchHandler()">save</button>
+                            <button class="clear" onclick="syslogClearHandler()">clear</button>
                         </div>
                     </div>    
                 </div>
@@ -121,6 +120,7 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/remoteSyslogConfigurationController.js"></script>
 </body>
 
 
