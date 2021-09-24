@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/snmpConfiguration.css">
 </head>
 <body>
     <div class="container">
@@ -94,26 +95,85 @@
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">SNMP Enable</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="snmp-enable"/>
+                                        <label for="snmp-enable"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">SNMP Port</div>
+                                    <div contenteditable="true" class="table-value" id="snmp-port"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key" id="snmp-version">SNMP Version</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="snmpv1" onclick="onlyOneVersion(this.id)"/>
+                                        <label for="snmpv1"><span>SNMPv1</span></label>
+                                        <input type="checkbox" class="checkbox" id="snmpv2" onclick="onlyOneVersion(this.id)"/>
+                                        <label for="snmpv2"><span>SNMPv2c</span></label>
+                                        <input type="checkbox" class="checkbox" id="snmpv3" onclick="onlyOneVersion(this.id)"/>
+                                        <label for="snmpv3"><span>SNMPv3</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">SNMP Community Access Mode</div>
+                                    <div class="checkbox-plate" id="community-access-mode">
+                                        <input type="checkbox" class="checkbox" id="RW"/>
+                                        <label for="RW"><span>Full (read-write)</span></label>
+                                        <input type="checkbox" class="checkbox" id="RO"/>
+                                        <label for="RO"><span>Limited (read-only)</span></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">SNMP Community Strings</div>
+                                    <div class="addable-div" id="community-strings">
+                                        <div class="add-btn-div">
+                                            <button class="plus-button" onclick="addCS()"></button>
+                                            <div class="button-label">add community-string</div>
+                                        </div>
+                                        <div class="addable-row" id="CS-table">
+                                            <!-- <div contenteditable="true" class="table-value">ex1</div>    
+                                            <div contenteditable="true" class="table-value">ex2</div>    
+                                            <div contenteditable="true" class="table-value">ex3</div>         -->
+                                        </div>
+                                        <div class="checkbox-plate">
+                                            <input type="checkbox" class="checkbox" id="hide-CS"/>
+                                            <label for="hide-CS"><span>hide commnunity string</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">SNMP Authentication Protocol</div>
+                                    <div class="select-box">
+                                        <select id="auth-protocol-select" name="AUTH-PROTOCOL-SELECT">
+                                            <option selected="selected" value="Account">Account</option>
+                                            <option value="Community String">Community String</option>
+                                            <option value="HMAC_MD5">HMAC_MD5</option>
+                                            <option value="HMAC_SHA96">HMAC_SHA96</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">User Name</div>
+                                    <div contenteditable="true" class="table-value" id="snmp-user-name"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">SNMP Encryption Protocol</div>
+                                    <div class="select-box">
+                                        <select  id="snmp-encryption-protocol" name="SNMP-ENCRYPTION-PROTOCOL">
+                                            <option value="Account">Account</option>
+                                            <option value="CBC_DES">CBC_DES</option>
+                                            <option value="CFB128_AES128">CFB128_AES128</option>
+                                            <option selected="selected" value="None">None</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                            <button class="save" onclick="snmpPatchHandler()">save</button>
+                            <button class="clear" onclick="snmpClearHandler()">clear</button>
                         </div>
                     </div>    
                 </div>
@@ -121,6 +181,7 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/snmpConfigurationController.js"></script>
 </body>
 
 
