@@ -311,7 +311,7 @@ hr.horizontal {
 }
 
 .password-div {
-    -webkit-text-security: disc;
-    -webkit-appearance: textfield;
+    -webkit-text-security: disc !important;
+    -webkit-appearance: textfield; 
     cursor: auto;
 }

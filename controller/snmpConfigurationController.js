@@ -60,6 +60,19 @@ window.onload = () => {
         RWMode.checked = false;
     }, false);
 
+    hideCS.addEventListener("change", function (e) {
+        snmpPatchCtx.HideCommunityStrings = this.checked;
+        const strings = document.querySelectorAll('.CS-table-row > .table-value');
+        if (hideCS.checked){
+            strings.forEach(str => {
+                str.type = "password";
+            });
+        }else {
+            strings.forEach(str => {
+                str.type = "text";
+            });
+        }
+    }, false);
     authProtocolSelect.addEventListener("change", function (e) {
         snmpPatchCtx.AuthenticationProtocol = this.value;
     }, false);
@@ -111,17 +124,16 @@ function paintCSList() {
     
     for (var i = 0; i < CSArray.length; i++){
         const CSTableRow = document.createElement("div");
-        const div = document.createElement("div");
+        const CSRow = document.createElement("input");
         const removeBtn = document.createElement("button");
 
         CSTableRow.className = "CS-table-row";
 
-        div.contentEditable = true;
-        div.classList.add("table-value");
-        div.innerText = CSArray[i];
-        div.addEventListener("input", function (e) {
+        CSRow.classList.add("table-value");
+        CSRow.value = CSArray[i];
+        CSRow.addEventListener("input", function (e) {
             const idx = e.currentTarget.parentNode.querySelector("button").id;
-            CSArray[idx] = this.innerText;
+            CSArray[idx] = this.value;
         })
 
         removeBtn.innerText = "X";
@@ -130,10 +142,17 @@ function paintCSList() {
         removeBtn.setAttribute("onclick", "removeCS(this.id);");
 
         CSTableRow.classList.add("list-style");
-        CSTableRow.appendChild(div);
+        CSTableRow.appendChild(CSRow);
         CSTableRow.appendChild(removeBtn);
         
         CSTable.appendChild(CSTableRow);
+    }
+    const strings = document.querySelectorAll('.CS-table-row > .table-value');
+    if (hideCS.checked){
+        strings.forEach(str => {
+            if (!str.type != "password")
+                str.type = "password";
+        });
     }
 }
 
@@ -154,7 +173,7 @@ function getSelectedVersion(v1,v2,v3) {
 
 function paintSNMPInfo(...snmpInfo) {
     const { ProtocolEnabled, Port, AuthenticationProtocol, CommunityAccessMode, UserName,
-            EnableSNMPv1, EnableSNMPv2c, EnableSNMPv3, EncryptionProtocol, HideCommunityStrings} = snmpInfo;
+            EnableSNMPv1, EnableSNMPv2c, EnableSNMPv3, EncryptionProtocol, HideCommunityStrings} = snmpInfo[0];
 
     snmpEnabled.checked = ProtocolEnabled;
     snmpPort.innerText = Port ?? "";
@@ -172,7 +191,7 @@ function paintSNMPInfo(...snmpInfo) {
         snmpEncryptionProtocol.disabled = false;
 
         for (var i = 0; i < authProtocolSelect.options.length; i++){
-            if (authProtocolSelect.options[i] == AuthenticationProtocol)
+            if (authProtocolSelect.options[i].innerText == AuthenticationProtocol)
                 authProtocolSelect.selectedIndex = i;
         }
 

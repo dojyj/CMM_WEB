@@ -17,3 +17,9 @@
     width: 3em;
     height: 90%;
 }
+
+.CS-table-row > input {
+    margin: 0;
+    text-align: unset;
+    border-radius: 0;
+}
