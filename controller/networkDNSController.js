@@ -53,10 +53,10 @@ function dnsClearHandler() {
 function paintConfig(DNSObj) {
     console.log(DNSObj);
 
-    hostname.innerText = DNSObj.HostName ?? "";
-    domainname.innerText = DNSObj.FQDN ?? "";
-    ipv4prefer.innerText = DNSObj.NameServers[0] ?? "";
-    ipv4alter.innerText = DNSObj.NameServers[1] ?? "";
+    hostname.innerText = DNSObj.HostName ?? "unknown";
+    domainname.innerText = DNSObj.FQDN ?? "unknown";
+    ipv4prefer.innerText = DNSObj.NameServers[0] ?? "unknown";
+    ipv4alter.innerText = DNSObj.NameServers[1] ?? "unknown";
     ipv6prefer.innerText = "";
     ipv6alter.innerText = "localhost";
 }

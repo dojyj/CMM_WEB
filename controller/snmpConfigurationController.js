@@ -176,7 +176,7 @@ function paintSNMPInfo(...snmpInfo) {
             EnableSNMPv1, EnableSNMPv2c, EnableSNMPv3, EncryptionProtocol, HideCommunityStrings} = snmpInfo[0];
 
     snmpEnabled.checked = ProtocolEnabled;
-    snmpPort.innerText = Port ?? "";
+    snmpPort.innerText = Port ?? "unknown";
 
     getSelectedVersion(EnableSNMPv1, EnableSNMPv2c, EnableSNMPv3);
 
@@ -197,7 +197,7 @@ function paintSNMPInfo(...snmpInfo) {
 
         if (authProtocolSelect.value == "Account"){
             snmpUserName.classList.remove("disabled-div");
-            snmpUserName.innerText = UserName ?? "";
+            snmpUserName.innerText = UserName ?? "unknown";
         }
         for (var i = 0; i < snmpEncryptionProtocol.options.length; i++){
             if (snmpEncryptionProtocol.options[i] == EncryptionProtocol)

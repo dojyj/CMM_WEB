@@ -37,24 +37,24 @@ function paintChassis({...chassisObj}) {
     }
     chassisSelect.options.selectedIndex = curChassisNum;
 
-    chassisType.innerText = ChassisType ?? "";
-    chassisPartNumber.innerText = PartNumber ?? "";
-    chassisSerial.innerText = SerialNumber ?? "";
-    chassisManufacturer.innerText = Manufacturer ?? "";
-    chassisModel.innerText = Model ?? "";
+    chassisType.innerText = ChassisType ?? "unknown";
+    chassisPartNumber.innerText = PartNumber ?? "unknown";
+    chassisSerial.innerText = SerialNumber ?? "unknown";
+    chassisManufacturer.innerText = Manufacturer ?? "unknown";
+    chassisModel.innerText = Model ?? "unknown";
 }
 
 function paintSystem({...systemObj}) {
     console.log(systemObj);
     const {HostName, SystemType, UUID, PartNumber, SerialNumber, Manufacturer, Model} = systemObj;
 
-    systemHostName.innerText = HostName ?? "";
-    systemType.innerText = SystemType ?? "";
-    systemUUID.innerText = UUID ?? "";
-    systemPartNumber.innerText = PartNumber ?? "";
-    systemSerialNumber.innerText = SerialNumber ?? "";
-    systemManufacturer.innerText = Manufacturer ?? "";
-    systemModel.innerText = Model ?? "";
+    systemHostName.innerText = HostName ?? "unknown";
+    systemType.innerText = SystemType ?? "unknown";
+    systemUUID.innerText = UUID ?? "unknown";
+    systemPartNumber.innerText = PartNumber ?? "unknown";
+    systemSerialNumber.innerText = SerialNumber ?? "unknown";
+    systemManufacturer.innerText = Manufacturer ?? "unknown";
+    systemModel.innerText = Model ?? "unknown";
 }
 
 async function getChassisInfo(chassis) {

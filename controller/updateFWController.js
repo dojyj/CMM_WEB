@@ -96,9 +96,9 @@ function paintVirtualMedia() {
         name.className = "name";
     
         // number.innerText = i + 1;
-        size.innerText = Size ?? "";
-        createTime.innerText = CreateTime ?? "";
-        name.innerText = ImageName ?? "";
+        size.innerText = Size ?? "unknown";
+        createTime.innerText = CreateTime ?? "unknown";
+        name.innerText = ImageName ?? "unknown";
 
         number.appendChild(selectBox);
         number.appendChild(numberText);

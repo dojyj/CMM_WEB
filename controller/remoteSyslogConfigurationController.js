@@ -23,8 +23,8 @@ function paintSyslogInfo(...syslogInfo) {
 
     console.log(syslogInfo);
     syslogServiceEnabled.checked = EnableSyslog ?? false;
-    syslogPortNumber.innerText = SyslogPortNumber ?? "";
-    syslogServer.innerText = SyslogServer ?? "";
+    syslogPortNumber.innerText = SyslogPortNumber ?? "unknown";
+    syslogServer.innerText = SyslogServer ?? "unknown";
 }
 
 function syslogClearHandler() {

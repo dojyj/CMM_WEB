@@ -75,3 +75,8 @@ const config = {
 
 const chart = new Chart(ctx, config);
 
+function init() {
+            
+}
+
+init();
