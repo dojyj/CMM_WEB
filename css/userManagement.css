@@ -69,74 +69,10 @@ div.previlege {
     flex-direction: column;
 }
 
-#user-add-modal .modal_close_btn {
+#user-add-modal {
     position: absolute;
     top: 10px;
     right: 10px;
-}
-
-.modal-header {
-    height: 15%;
-    width: 100%;
-    padding-top: 3%;
-    display: flex;
-    justify-content: flex-start;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 1em;
-}  
-
-.modal-header > img {
-    width: 20px;
-    height: 20px;
-    margin-right: 1em;
-}
-
-.modal-header > p {
-    font-weight: bolder;
-}
-
-.modal-body {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.modal-row {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    border-bottom: 1px solid #eee;
-    align-items: stretch;
-}
-
-.modal-key {
-    min-width: 200px;
-    width: 14%;
-    padding: .5em .5em .5em 1em;
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-}
-
-.modal-value {
-    width: 25%;
-    padding: .5em;
-    padding-left: 1em;
-}
-
-.modal-value:focus-within {
-    background-color: #EEE;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.modal-body > .checkbox-plate {
-    margin-top: 1em;
 }
 
 .checkbox {
