@@ -10,7 +10,8 @@ export const CMMResourceURI = {
     SESSIONS : "/redfish/v1/SessionService/Sessions",
     SESSIONSERVICE : "/redfish/v1/SessionService",
     NETWORKPROTOCOL : "/redfish/v1/Managers/1/NetworkProtocol",
-    SYSLOGSERVICE : "/redfish/v1/Managers/1/Syslog"
+    SYSLOGSERVICE : "/redfish/v1/Managers/1/Syslog",
+    LOGSERVICE : "/redfish/v1/Managers/1/LogServices",
 }
 
 export const getResource = async (url) => {

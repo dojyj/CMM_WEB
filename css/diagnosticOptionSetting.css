@@ -1,0 +1,58 @@
+.facility-div {
+    border-right: 1px solid #FFF;
+    width: 50%;
+    text-align: center;
+    padding : .5em 0 .5em 0;
+}
+
+.lowest-severity-div {
+    width: 50%;
+    text-align: center;
+    padding : .5em 0 .5em 0;
+}
+
+#filter-add-modal {
+    display: none;
+    height: 480px;
+    width: 600px;
+    padding: 20px 60px;
+    background-color: #fefefe;
+    border: 2px solid #888;
+    border-radius: 10px;
+    flex-direction: column;
+    overflow:auto;
+}
+
+.card-plate {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1em 0 2em 0;
+    border-bottom: 1px solid #EEE;
+}
+
+.card-plate > .card {
+    display: inline-flex;
+    padding: 1em;
+    background-color: rgb(204, 247, 187);
+    margin: 0.2em;
+    border-radius: 2em;
+    cursor: pointer;
+
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: .8em;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    transition: 0.5s;
+}
+
+.card:hover {
+    background-color: yellowgreen;
+}
+
+.clicked-card {
+    background-color: yellowgreen !important;
+}

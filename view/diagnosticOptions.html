@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
+    <link rel="stylesheet" type="text/css" href="/css/diagnosticOptionSetting.css">
 </head>
 <body>
     <div class="container">
@@ -85,35 +87,116 @@
                 <div class="Plate">
                     <div class="Plate-Header">
                         <h2>Diagnostic Option Setting</h2>
+                        <div class="select-box">
+                            <select id="log-service-select" name="LOGSERVICE-SELECT">
+                            </select>
+                        </div>
                     </div>
                     <div class="Plate-Body" id="table-plate">
                         <div class="detail-table">
                             <div class="table-header">
                                 <img src="/images/table header.png" alt="table header icon">
-                                <p>Settings</p>
+                                <p>LogService Setting</p>
                             </div>
                             <div class="table-body">
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">LogService Name</div>
+                                    <div id="name" class="table-value"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Log Type</div>
+                                    <div id="type" class="table-value"></div>    
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Log Service Enable</div>
+                                    <div class="checkbox-plate">
+                                        <input type="checkbox" class="checkbox" id="enable"/>
+                                        <label for="enable"><span>Enable</span></label>
+                                    </div>
                                 </div>
                                 <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
+                                    <div class="table-key">Overwrite Policy</div>
+                                    <div id="overwrite-policy" class="table-value"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Max Number of Records</div>
+                                    <div id="max-num-of-records" class="table-value"></div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Date Time Local Offset (UTC)</div>
+                                    <div class="select-box">
+                                        <select name="Timezone-Select" id="datetime-offset-select">
+                                        </select>
+                                    </div>                
                                 </div>
                             </div>
                         </div>
+                        <div class="detail-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>LogService Filter</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="addable-div">
+                                    <div class="addable-header">
+                                        <div class="facility-div">Facilities</div>
+                                        <div class="lowest-severity-div">Lowest Severity</div>
+                                    </div>
+                                    <div class="addable-col" id="filter">
+                                    </div>
+                                </div>
+                                <div class="add-btn-div">
+                                    <button class="plus-button" onclick="addFilterModal()"></button>
+                                    <div class="button-label">add Filter</div>
+                                </div>
+                                <div class="modal" id="filter-add-modal">
+                                    <div class="modal-header">
+                                        <img src="/images/table header.png" alt="table header icon">
+                                        <p>Add Filter</p>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-plate">
+                                            <div class=card id="Auth">Security/authentication messages</div>
+                                            <div class=card id="Console">Log alert</div>
+                                            <div class=card id="Cron">Clock daemon</div>
+                                            <div class=card id="Daemon">System daemons</div>
+                                            <div class=card id="FTP">FTP daemon</div>
+                                            <div class=card id="Kern">Kernel messages</div>
+                                            <div class=card id="LPR">Line printer subsystem</div>
+                                            <div class=card id="Mail">Mail system</div>
+                                            <div class=card id="News">Network news subsystem</div>
+                                            <div class=card id="NTP">NTP subsystem</div>
+                                            <div class=card id="Security">Log audit</div>
+                                            <div class=card id="SolarisCron">Scheduling daemon</div>
+                                            <div class=card id="Syslog">Messages generated internally by syslogd</div>
+                                            <div class=card id="User">User-level messages</div>
+                                            <div class=card id="UUCP">UUCP subsystem</div>
+                                        </div>
+                                        <div class="modal-row">
+                                            <div class="modal-key">Lowest Seversity</div>
+                                            <select name="LOWEST-SEVERSITY-SELECT" id="lowest-severity-select">
+                                                <option value="Alert">Alert</option>
+                                                <option selected value="All">All</option>
+                                                <option value="Critical">Critical</option>
+                                                <option value="Debug">Debug</option>
+                                                <option value="Emergency">Emergency</option>
+                                                <option value="Error">Error</option>
+                                                <option value="Informational">Informational</option>
+                                                <option value="Notice">Notice</option>
+                                                <option value="Warning">Warning</option>
+                                            </select>        
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="modal-add-btn save">add</button>
+                                        <button class="modal-close-btn clear">close</button>    
+                                    </div>
+                                </div>        
+                            </div>
+                        </div>
                         <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
+                            <button class="save" onclick="saveBtn()">save</button>
+                            <button class="clear" onclick="clearBtn()">clear</button>
                         </div>
                     </div>    
                 </div>
@@ -121,7 +204,6 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/diagnosticOptionsController.js"></script>
 </body>
-
-
 </html>

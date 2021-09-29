@@ -193,12 +193,31 @@ div:empty:before {
     font-size: .9em;
 }
 
-.addable-row {
+.addable-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
+    background-color: #AAA;
+    justify-content: space-evenly;
 }
 
-.addable-row > .table-value {
+.addable-header > div {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.addable-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.addable-col {
+    display: flex;
+    flex-direction: column;
+    background-color: #EEE;
+}
+
+.addable-col > .table-value {
     min-width: 365px;
     width: 100%;
 }
