@@ -58,3 +58,21 @@ div.empty-block {
   flex: 1;
   justify-content: flex-end;
 }
+
+/* file browse css */
+.droppable {
+  background-color: #EEE;
+  color: black;
+  padding: 5em;
+  margin: 1em;
+  text-align: center;
+}
+
+.droppable.dragover {
+  background: #00CC71;
+}
+
+.file-div > div{
+  padding: 1em;
+  border-bottom: 1px solid #EEE;
+}
