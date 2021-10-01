@@ -1,82 +1,113 @@
-const ctx = document.getElementById('thermal-chart');
+import { ActionsURI, CMMResourceURI, getResource, postResource } from "./Resource.js";
+import { paintSelect } from "./util.js";
 
-const timeFormat = 'DD/MM/YYYY';
+// LogService Select
+let logServiceCollection = [];
+let curLogServiceNum;
 
-const config = {
-    type: 'line',
-    data: {
-        datasets: [{ 
-            data: [{
-                x: "01/01/2021", y: 30.6
-            },{
-                x: "01/02/2021", y: 25.6
-            },{
-                x: "01/03/2021", y: 24.6
-            },{
-                x: "01/04/2021", y: 33.6
-            },],
-            label: "CMM",
-            borderColor: "#123",
-            fill: false
-        },{ 
-            data: [{
-                x: "01/01/2021", y: 38.6
-            },{
-                x: "01/02/2021", y: 40.6
-            },{
-                x: "01/03/2021", y: 22.6
-            },{
-                x: "01/04/2021", y: 56.6
-            },],
-            label: "CM #1",
-            borderColor: "#789",
-            fill: false
-        },{ 
-            data: [{
-                x: "01/01/2021", y: 31.6
-            },{
-                x: "01/02/2021", y: 35.6
-            },{
-                x: "01/03/2021", y: 45.6
-            },{
-                x: "01/04/2021", y: 22.6
-            },],
-            label: "CM #2",
-            borderColor: "#DEF",
-            fill: false
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: 'Thermal Chart 2021'
-        },
-        scales: {
-            xAxes: [{
-                type: 'time',
-                time: {
-                    format: timeFormat,
-                    tooltipFormat: 'll'
-                },
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Date'
-                }
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'thermal'
-                }
-            }]
-        }
+// Logs
+let logEntryCollection = [];
+let logInfoArray = [];
+
+const logServiceSelect = document.getElementById("log-service-select");
+const logScrollBody = document.getElementById("log-scroll-body");
+
+const description = document.getElementById("description");
+const logServiceType = document.getElementById("log-service-type");
+const timeOffset = document.getElementById("time-offset");
+
+window.onload = () => {
+    logServiceSelect.addEventListener("change", function (e) {
+        curLogServiceNum = e.currentTarget.selectedIndex;
+        paint();
+    },false);
+}
+
+async function clearLogs() {
+    if (confirm("정말 모든 로그를 삭제하시겠습니까?") == true){
+        await postResource(`${logServiceCollection[curLogServiceNum]["@odata.id"]}${ActionsURI.CLEARLOG}`, {});
+        paint();
+    } else {
+        return;
     }
-};
+}
 
-const chart = new Chart(ctx, config);
+async function getLogServiceArray() {
+    const logService = await getResource(CMMResourceURI.LOGSERVICE);
+    logServiceCollection = logService.Members;    
+}
 
-function init() {
-            
+async function getLogArray() {
+    const logs = await getResource(`${logServiceCollection[curLogServiceNum]["@odata.id"]}/Entries`);
+    logEntryCollection = logs.Members;
+}
+
+function paintLogServiceInfo(info) {
+    const { Description, LogEntryType, DateTimeLocalOffset } = info;
+
+    description.innerText = Description || "unknown";
+    logServiceType.innerText = LogEntryType || "unknown";
+    timeOffset.innerText = DateTimeLocalOffset || "unknown";
+}
+
+function paintLogInfo() {
+    console.log(logInfoArray);
+    for (let i = 0; i < logInfoArray.length; i++){
+        const { Created, MessageId, Name, EntryType, Severity} = logInfoArray[i];
+
+        const scrollRow = document.createElement("div");
+        const timeStampDiv = document.createElement("div");
+        const messageIdDiv = document.createElement("div");
+        const logNameDiv = document.createElement("div");
+        const logTypeDiv = document.createElement("div");
+        const logSeverityDiv = document.createElement("div");
+
+        scrollRow.className = "scroll-row";
+        
+        timeStampDiv.className = "time-stamp";
+        messageIdDiv.className = "log-name";
+        logNameDiv.className = "log-name";
+        logTypeDiv.className = "log-type";
+        logSeverityDiv.className = "log-severity";
+
+        timeStampDiv.innerText = Created || "unknown";
+        messageIdDiv.innerText = MessageId || "unknown";
+        logNameDiv.innerText = Name || "unknown";
+        logTypeDiv.innerText = EntryType || "unknown";
+        logSeverityDiv.innerText = Severity || "unknown";
+
+        scrollRow.appendChild(timeStampDiv);
+        scrollRow.appendChild(messageIdDiv);
+        scrollRow.appendChild(logNameDiv);
+        scrollRow.appendChild(logTypeDiv);
+        scrollRow.appendChild(logSeverityDiv);
+
+        logScrollBody.appendChild(scrollRow);
+    }
+}
+
+async function paint() {
+    const logServiceInfo = await getResource(logServiceCollection[curLogServiceNum]["@odata.id"]);
+    paintLogServiceInfo(logServiceInfo);
+    
+    for (let i = 0; i < logEntryCollection.length; i++){
+        const logInfo = await getResource(logEntryCollection[i]["@odata.id"]);
+        
+        // test
+        for (let test = 0; test < 100; test++)
+            logInfoArray.push(logInfo);
+    }
+    paintLogInfo()
+}
+
+async function init() {
+    curLogServiceNum = 0;
+
+    await getLogServiceArray();
+    paintSelect(logServiceSelect, logServiceCollection, "LogService", curLogServiceNum);
+    await getLogArray();
+    paint();
 }
 
 init();
+window.clearLogs = clearLogs;

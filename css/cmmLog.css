@@ -1,0 +1,28 @@
+.time-stamp {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    border-right: 1px solid white;
+    height: 100%;
+    align-items: center;
+    padding: .5em 0;
+}
+
+.message-id, .log-name, .log-type{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    border-right: 1px solid white;
+    height: 100%;
+    align-items: center;
+    padding: .5em 0;
+}
+
+.log-severity {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    padding: .5em 0;
+}
