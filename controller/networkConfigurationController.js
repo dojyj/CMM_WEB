@@ -144,25 +144,25 @@ function paintConfig(NetworkObj) {
     interfaceSelect.options.selectedIndex = curEthNum;
     
     ethernetEnable.checked = NetworkObj.InterfaceEnabled ?? false;
-    macAddress.innerText = NetworkObj.MACAddress ?? "unknown";
+    macAddress.innerText = NetworkObj.MACAddress || "unknown";
     
     if (NetworkObj.IPv4Addresses.length != 0){
         ipv4UseDHCP.checked = NetworkObj.DHCPv4.DHCPEnabled ?? false;
-        ipv4Address.innerText = NetworkObj.IPv4Addresses[0].Address ?? "unknown";
-        ipv4SubnetMask.innerText = NetworkObj.IPv4Addresses[0].SubnetMask ?? "unknown";
-        ipv4DefaultGateway.innerText = NetworkObj.IPv4Addresses[0].Gateway ?? "unknown";
+        ipv4Address.innerText = NetworkObj.IPv4Addresses[0].Address || "unknown";
+        ipv4SubnetMask.innerText = NetworkObj.IPv4Addresses[0].SubnetMask || "unknown";
+        ipv4DefaultGateway.innerText = NetworkObj.IPv4Addresses[0].Gateway || "unknown";
     }
     
     if (NetworkObj.IPv6Addresses.length != 0){
         ipv6Enable.checked = true;
         ipv6UseDHCP.checked = NetworkObj.DHCPv6.OperatingMode == ("Stateful" || "Stateless") ? true : false;
-        ipv6Address.innerText = NetworkObj.IPv6Addresses[0].Address ?? "unknown";
-        ipv6SubnetPrefixLength.innerText = NetworkObj.IPv6Addresses[0].PrefixLength ?? "unknown";
-        ipv6DefaultGateway.innerText = NetworkObj.IPv6DefaultGateway ?? "unknown";
+        ipv6Address.innerText = NetworkObj.IPv6Addresses[0].Address || "unknown";
+        ipv6SubnetPrefixLength.innerText = NetworkObj.IPv6Addresses[0].PrefixLength || "unknown";
+        ipv6DefaultGateway.innerText = NetworkObj.IPv6DefaultGateway || "unknown";
     }
 
     vlanEnable.checked = NetworkObj.VLAN.VLANEnable ?? false;
-    vlanId.innerText = NetworkObj.VLAN.VLANId ?? "unknown";
+    vlanId.innerText = NetworkObj.VLAN.VLANId || "unknown";
     vlanPriority.innerText = "";
 }
 

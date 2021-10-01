@@ -5,8 +5,9 @@ button {
     -moz-appearance: none;
     appearance: none;
 
-    padding: 0.5rem 1rem;
+    padding: 0.5em 1em;
     margin: 1em;
+    background: var(--button-bg-color);
 
     font-family: "Noto Sans KR", sans-serif;
     font-size: 1rem;
@@ -37,14 +38,19 @@ button:disabled {
   opacity: 0.5;
 }
 
+button.normal {
+  --button-bg-color: #FAFAFA;
+  --button-hover-bg-color: #AFAFAF;
+}
+
 button.save {
-  --button-bg-color: #f48000;
+  --button-bg-color: #f5caca;
   --button-hover-bg-color: #f49999;
 }
 
 button.clear {
-  --button-bg-color: #28a745;
-  --button-hover-bg-color: #218838;
+  --button-bg-color: #a2eca2;
+  --button-hover-bg-color: #3fca5e;
 }
 
 div.empty-block {

@@ -213,7 +213,7 @@ function addAccountList(accountObj) {
     userAccess.innerText = accountObj.access;
     userPrev.innerText = accountObj.prev;
 
-    passwordChangeBtn.className = "save";
+    passwordChangeBtn.className = "normal";
     passwordChangeBtn.innerText = "Manage User";
     passwordChangeBtn.id = accountObj.id;
     passwordChangeBtn.style.fontSize = "0.8em";

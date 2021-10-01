@@ -28,7 +28,7 @@ function addList(obj) {
     sessionType.innerText = obj.stype;
     sessionPrev.innerText = obj.prev;
 
-    sessionCloseBtn.className = "save";
+    sessionCloseBtn.className = "normal";
     sessionCloseBtn.innerText = "Close This Session";
     sessionCloseBtn.id = obj.sid;
     sessionCloseBtn.style.fontSize = "0.8em";

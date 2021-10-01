@@ -14,6 +14,10 @@ export const CMMResourceURI = {
     LOGSERVICE : "/redfish/v1/Managers/1/LogServices",
 }
 
+export const ActionsURI = {
+    CLEARLOG : "/Actions/LogService.ClearLog",
+}
+
 export const getResource = async (url) => {
     const res = await fetchAPI.get(url);
     return await res.json();

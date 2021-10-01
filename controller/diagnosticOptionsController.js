@@ -329,7 +329,7 @@ function paintSelect() {
     logServiceSelect.options.length = 0;
     for (let i = 0; i < logServiceCollection.length; i++){
         let option = document.createElement('option');
-        option.innerText = `Log #${i+1}`;
+        option.innerText = `LogService #${i+1}`;
         logServiceSelect.append(option);
     }
     logServiceSelect.options.selectedIndex = curLogServiceNum;    
@@ -343,6 +343,8 @@ function paintFilter() {
         const addableRow = document.createElement("div");
         const facilityDiv = document.createElement("div");
         const lowestSeverity = document.createElement("div");
+        const btnDiv = document.createElement("div");
+        const removeBtn = document.createElement("button");
 
         addableRow.className = "addable-row";
         facilityDiv.className = "facility-div";
@@ -359,8 +361,22 @@ function paintFilter() {
         facilityDiv.innerText = facilitiesStr;
         lowestSeverity.innerText = LowestSeverity;
 
+        btnDiv.style.display = "flex";
+        btnDiv.style.flex = 1;
+        
+        removeBtn.innerText = "X";
+        removeBtn.classList.add("normal");
+        removeBtn.id = i;
+        removeBtn.addEventListener("onclick", function (e) {
+            filterArray.splice(this.id);
+            paintFilter();
+        }, true);
+        btnDiv.appendChild(removeBtn);
+
         addableRow.appendChild(facilityDiv);
         addableRow.appendChild(lowestSeverity);
+        addableRow.appendChild(btnDiv);
+
         filterDiv.appendChild(addableRow);
     }
 }
@@ -390,11 +406,11 @@ async function paintConfig() {
     
     console.log(logServiceConfig);
 
-    name.innerText = Name ?? "unknown";
-    type.innerText = LogEntryType ?? "unknown";
+    name.innerText = Name || "unknown";
+    type.innerText = LogEntryType || "unknown";
     enable.checked = ServiceEnabled ?? false;
-    overwritePolicy.innerText = OverWritePolicy ?? "unknown";
-    maxNumOfRecords.innerText = MaxNumberOfRecords ?? "unknown";
+    overwritePolicy.innerText = OverWritePolicy || "unknown";
+    maxNumOfRecords.innerText = MaxNumberOfRecords || "unknown";
     
     const num = parseInt(DateTimeLocalOffset);
     curTimeZone = (num >= 0) ? num + 12 : abs(num); 
