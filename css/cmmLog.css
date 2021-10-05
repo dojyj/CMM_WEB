@@ -8,7 +8,7 @@
     padding: .5em 0;
 }
 
-.message-id, .log-name, .log-type{
+.message-id, .log-name, .log-type, .log-value{
     display: flex;
     flex: 1;
     justify-content: center;

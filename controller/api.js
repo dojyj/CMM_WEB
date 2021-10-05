@@ -1,4 +1,4 @@
-import { host } from "../ENV.js";
+import { HA_host, host } from "../ENV.js";
 
 export const fetchAPI = {
     get : (path) => fetch(`${host}${path}`),
@@ -71,4 +71,8 @@ export const fetchAPI = {
             }    
         }
     },
+}
+
+export const HA_API = {
+    get : (path) => fetch(`${HA_host}${path}`),
 }

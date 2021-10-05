@@ -304,8 +304,8 @@ div:empty:before {
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    min-height: 600px;
-    max-height: 600px;
+    min-height: 222px;
+    max-height: 222px;
 }
 
 .scroll-row {

@@ -44,12 +44,6 @@ hr.vertical {
 hr.horizontal {
     flex: 0 0 100%;
 }
-.device-name {
-    font-size: 1em;
-    color: blueviolet;
-    font-weight: bold;
-    padding-top: 1%;
-}
 
 .header {
     background-color: black;
@@ -202,6 +196,7 @@ hr.horizontal {
     height: 20%;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .cmm-box {

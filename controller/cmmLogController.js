@@ -53,13 +53,14 @@ function paintLogServiceInfo(info) {
 function paintLogInfo() {
     console.log(logInfoArray);
     for (let i = 0; i < logInfoArray.length; i++){
-        const { Created, MessageId, Name, EntryType, Severity} = logInfoArray[i];
+        const { Created, MessageId, Name, EntryType, MessageArgs, Severity} = logInfoArray[i];
 
         const scrollRow = document.createElement("div");
         const timeStampDiv = document.createElement("div");
         const messageIdDiv = document.createElement("div");
         const logNameDiv = document.createElement("div");
         const logTypeDiv = document.createElement("div");
+        const logValueDiv = document.createElement("div");
         const logSeverityDiv = document.createElement("div");
 
         scrollRow.className = "scroll-row";
@@ -68,18 +69,21 @@ function paintLogInfo() {
         messageIdDiv.className = "log-name";
         logNameDiv.className = "log-name";
         logTypeDiv.className = "log-type";
+        logValueDiv.className = "log-value";
         logSeverityDiv.className = "log-severity";
 
         timeStampDiv.innerText = Created || "unknown";
         messageIdDiv.innerText = MessageId || "unknown";
         logNameDiv.innerText = Name || "unknown";
         logTypeDiv.innerText = EntryType || "unknown";
+        logValueDiv.innerText = `${MessageArgs[0]} °C` || "unknown";
         logSeverityDiv.innerText = Severity || "unknown";
 
         scrollRow.appendChild(timeStampDiv);
         scrollRow.appendChild(messageIdDiv);
         scrollRow.appendChild(logNameDiv);
         scrollRow.appendChild(logTypeDiv);
+        scrollRow.appendChild(logValueDiv);
         scrollRow.appendChild(logSeverityDiv);
 
         logScrollBody.appendChild(scrollRow);
@@ -93,8 +97,8 @@ async function paint() {
     for (let i = 0; i < logEntryCollection.length; i++){
         const logInfo = await getResource(logEntryCollection[i]["@odata.id"]);
         
-        // test
-        for (let test = 0; test < 100; test++)
+        // // test
+        // for (let test = 0; test < 100; test++)
             logInfoArray.push(logInfo);
     }
     paintLogInfo()
