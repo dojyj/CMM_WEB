@@ -1,0 +1,80 @@
+.double-table {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.double-table-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    padding: 1em;
+    border: 1px solid #EEE;
+}
+
+.double-table-body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-table, .right-table{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    min-height: 256px;
+    align-items: center;
+}
+
+.left-table {
+    border-right: 1px solid #EEE;
+}
+
+.device-plate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #EEE;
+    width: 90%;
+    align-items: center;
+    padding: 1em;
+}
+
+.device-div {
+    display: flex;
+    border-bottom: 1px solid #EEE ;
+    padding: 1em;
+    width: 90%;
+    align-items: center;
+}
+
+.device-name {
+    font-size: 1em;
+    color: blueviolet;
+    font-weight: bold;
+    width: 5em;
+}
+
+.device-image > img{
+    width: 4em;
+    height: 4em;
+    object-fit: contain;
+    margin-left: 2em;
+}
+
+#memory-img:first-child {
+    margin-left : 2em;
+}
+
+#memory-img {
+    margin : 0;
+    width: 2em;
+}
+
+#cmm-firmware-info-table > .table-header, #cmm-firmware-info-table > .table-body{
+    width: 95%;
+}

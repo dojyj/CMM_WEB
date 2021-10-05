@@ -5,6 +5,9 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/DashBoard.css">
+    <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
 </head>
 <body>
     <div class="container">
@@ -83,17 +86,148 @@
                 <div class="Plate">
                     <div class="Plate-Header">
                         <h2>CMM Dashboard</h2>
-                        <div class="select-box">
-                            <select name="BMC-SELECT">
-                                <option value="CM1" selected="selected">CM #1</option>
-                                <option value="CM2">CM #2</option>
-                                <option value="SM1">SM #1</option>
-                                <option value="SM2">SM #2</option>
-                            </select>
+                    </div>
+                    <div class="Plate-Body">
+                        <div class="double-table">
+                            <div class="left-table">
+                                <div class="double-table-header">
+                                    <h3>CMM #1</h3> 
+                                    <div class="cmm-status">
+                                        <img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png"/>
+                                        <p>Active</p>
+                                    </div>        
+                                </div>
+                                <div class="double-table-body">
+                                    <div class="device-plate">
+                                        <div class="device-div">
+                                            <div class="device-name">Power</div>
+                                            <div class="device-image">
+                                                <img src="/images/power-on.png" alt="power-on">
+                                                <img src="/images/power-on.png" alt="power-on">
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Cpu</div>
+                                            <div class="device-image">
+                                                <img src="/images/cpu-on.png" alt="cpu-on">
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Memory</div>
+                                            <div class="device-image">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Ethernet</div>
+                                            <div class="device-image">
+                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <div class="detail-table">
+                                        <div class="table-header">
+                                            <img src="/images/table header.png" alt="table header icon">
+                                            <p>CMM #1 Network Configuration</p>
+                                        </div>
+                                        <div class="table-body">
+                                            <div class="table-row">
+                                                <div class="table-key">Ip</div>
+                                                <div class="table-value">10.0.6.107</div>    
+                                            </div>
+                                            <div class="table-row">
+                                                <div class="table-key">Port</div>
+                                                <div class="table-value">443</div>    
+                                            </div>
+                                        </div>
+                                    </div>            
+                                </div>
+                            </div>
+                            <div class="right-table">
+                                <div class="double-table-header">
+                                    <h3>CMM #2</h3> 
+                                    <div class="cmm-status">
+                                        <img src="https://img.icons8.com/emoji/48/000000/yellow-circle-emoji.png"/>
+                                        <p>Stand-By</p>
+                                    </div>        
+                                </div>
+                                <div class="double-table-body">
+                                    <div class="device-plate">
+                                        <div class="device-div">
+                                            <div class="device-name">Power</div>
+                                            <div class="device-image">
+                                                <img src="/images/power-on.png" alt="power">
+                                                <img src="/images/power-on.png" alt="power">
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Cpu</div>
+                                            <div class="device-image">
+                                                <img src="/images/cpu-on.png" alt="cpu">
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Memory</div>
+                                            <div class="device-image">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Ethernet</div>
+                                            <div class="device-image">
+                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png" alt="ethernet"/>
+                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png" alt="ethernet"/>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <div class="detail-table">
+                                        <div class="table-header">
+                                            <img src="/images/table header.png" alt="table header icon">
+                                            <p>CMM #2 Network Configuration</p>
+                                        </div>
+                                        <div class="table-body">
+                                            <div class="table-row">
+                                                <div class="table-key">Ip</div>
+                                                <div class="table-value">10.0.6.106</div>    
+                                            </div>
+                                            <div class="table-row">
+                                                <div class="table-key">Port</div>
+                                                <div class="table-value">443</div>    
+                                            </div>
+                                        </div>
+                                    </div>            
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="detail-table" id="cmm-firmware-info-table">
+                            <div class="table-header">
+                                <img src="/images/table header.png" alt="table header icon">
+                                <p>CMM Firmware Information</p>
+                            </div>
+                            <div class="table-body">
+                                <div class="table-row">
+                                    <div class="table-key">Firmware version</div>
+                                    <div class="table-value">1.0</div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Firmware Build Time</div>
+                                    <div class="table-value">2021.09.14</div>    
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-key">Kernel Version</div>
+                                    <div class="table-value">Ubuntu 18.04 LTS</div>    
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="Plate-Body" id="table-plate">
-                    </div>    
                 </div>
             </div>    
         </div>
