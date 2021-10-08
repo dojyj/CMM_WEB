@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/detailTable.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/chart.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
@@ -46,7 +48,7 @@
                 <dt class="menu-control"> 
                     <div class="navi-box">Power & Thermal</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/Power_Thermal/chassisSummary.html'">- Chassis Summary</div>
-                    <div class="cur-navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Supply Summary</div>
+                    <div class="cur-navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Summary</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/Power_Thermal/temperatureInfo.html'">- Temperature Summary</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/Power_Thermal/fanInfo.html'">- Fan Summary</div>
                     <div class="cur-navi-box-sub" onclick="location.href='/view/Power_Thermal/smartHeaterInfo.html'">- Smart Heater Summary</div>
@@ -84,44 +86,44 @@
             <div class ="Main-Plate">
                 <div class="Plate">
                     <div class="Plate-Header">
+                        <h2>Power Control Summary</h2>
+                    </div>
+                    <div class="chart-div">
+                        <canvas id="power-control-chart" height="300" width="1200"></canvas>                              
+                        <div class="multi-btn-row-div">
+                            <button id="pc" onclick="timeFlagChange(this)" class="normal">Minute</button>
+                            <button id="pc" onclick="timeFlagChange(this)" class="normal">Hour</button>
+                        </div>
+                    </div>                        
+                </div>
+                <div class="Plate">
+                    <div class="Plate-Header">
+                        <h2>Power Voltages Summary</h2>
+                    </div>
+                    <div class="chart-div">
+                        <canvas id="power-voltage-chart" height="300" width="1200"></canvas>                              
+                        <div class="multi-btn-row-div">
+                            <button id="pv" onclick="timeFlagChange(this)" class="normal">Minute</button>
+                            <button id="pv" onclick="timeFlagChange(this)" class="normal">Hour</button>
+                        </div>
+                    </div>                        
+                </div>
+                <div class="Plate">
+                    <div class="Plate-Header">
                         <h2>Power Supply Summary</h2>
                     </div>
-                    <div class="Plate-Body" id="table-plate">
-                        <div class="detail-table">
-                            <div class="table-header">
-                                <img src="/images/table header.png" alt="table header icon">
-                                <p>Power Supply Summary</p>
-                            </div>
-                            <div class="table-body">
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                                <div class="table-row">
-                                    <div class="table-key">key</div>
-                                    <div contenteditable="true" class="table-value">value</div>    
-                                </div>
-                            </div>
+                    <div class="chart-div">
+                        <canvas id="power-supply-chart" height="300" width="1200"></canvas>                              
+                        <div class="multi-btn-row-div">
+                            <button id="ps" onclick="timeFlagChange(this)" class="normal">Minute</button>
+                            <button id="ps" onclick="timeFlagChange(this)" class="normal">Hour</button>
                         </div>
-                        <div class="Plate-Footer">
-                            <button class="save">save the modified</button>
-                            <button class="clear">clear the modified</button>
-                        </div>
-                    </div>    
+                    </div>                        
                 </div>
             </div>    
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/powerSupplySummary.js"></script>
 </body>
-
-
 </html>

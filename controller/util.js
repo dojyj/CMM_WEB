@@ -1,4 +1,4 @@
-// ==================================================== Select ============================================
+// select div 생성
 export const paintSelect = (selectElement, elementsCollection, selectName, curSelectNum) => {
     selectElement.options.length = 0;
     for (let i = 0; i < elementsCollection.length; i++){
@@ -8,8 +8,8 @@ export const paintSelect = (selectElement, elementsCollection, selectName, curSe
     }
     selectElement.options.selectedIndex = curSelectNum;
 }
-// ==================================================== Select ============================================
 
+// byte 변환기
 export const formatBytes = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes';
 
@@ -20,4 +20,9 @@ export const formatBytes = (bytes, decimals = 2) => {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
 
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+// 두 값 사이의 난수 생성기 (최소값, 최대값, 소수점 반올림 자리)
+export const getRandomArbitarary = (min, max, fixed) => {
+    return ((Math.random() * (max - min)) + min).toFixed(fixed);
 }
