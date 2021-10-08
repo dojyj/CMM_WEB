@@ -59,18 +59,35 @@
     width: 5em;
 }
 
-.device-image > img{
+.device-image {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-div > img{
     width: 4em;
     height: 4em;
     object-fit: contain;
     margin-left: 2em;
 }
 
-#memory-img:first-child {
+.img-div > p {
+    margin-left: 2em;
+    height: auto;
+    text-align: center;
+    color: red;
+}
+
+#memory-img:first-child > img{
     margin-left : 2em;
 }
 
-#memory-img {
+#memory-img > img{
     margin : 0;
     width: 2em;
 }

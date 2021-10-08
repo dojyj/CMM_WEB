@@ -47,7 +47,7 @@
                 <dt class="menu-control"> 
                     <div class="navi-box">Power & Thermal</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/chassisSummary.html'">- Chassis Summary</div>
-                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Supply Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Summary</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/temperatureInfo.html'">- Temperature Summary</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/fanInfo.html'">- Fan Summary</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/smartHeaterInfo.html'">- Smart Heater Summary</div>
@@ -102,30 +102,51 @@
                                         <div class="device-div">
                                             <div class="device-name">Power</div>
                                             <div class="device-image">
-                                                <img src="/images/power-on.png" alt="power-on">
-                                                <img src="/images/power-on.png" alt="power-on">
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="device-div">
                                             <div class="device-name">Cpu</div>
                                             <div class="device-image">
-                                                <img src="/images/cpu-on.png" alt="cpu-on">
+                                                <div class="img-div">
+                                                    <img src="/images/cpu-on.png" alt="cpu-on">
+                                                    <p>35.5°C</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="device-div">
                                             <div class="device-name">Memory</div>
                                             <div class="device-image">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="device-div">
                                             <div class="device-name">Ethernet</div>
                                             <div class="device-image">
-                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
-                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
                                             </div>
                                         </div>    
                                     </div>
@@ -137,11 +158,11 @@
                                         <div class="table-body">
                                             <div class="table-row">
                                                 <div class="table-key">Ip</div>
-                                                <div class="table-value">10.0.6.107</div>    
+                                                <div class="table-value" id="active-ip"></div>    
                                             </div>
                                             <div class="table-row">
                                                 <div class="table-key">Port</div>
-                                                <div class="table-value">443</div>    
+                                                <div class="table-value" id="active-port"></div>    
                                             </div>
                                         </div>
                                     </div>            
@@ -160,30 +181,51 @@
                                         <div class="device-div">
                                             <div class="device-name">Power</div>
                                             <div class="device-image">
-                                                <img src="/images/power-on.png" alt="power">
-                                                <img src="/images/power-on.png" alt="power">
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="device-div">
                                             <div class="device-name">Cpu</div>
                                             <div class="device-image">
-                                                <img src="/images/cpu-on.png" alt="cpu">
+                                                <div class="img-div">
+                                                    <img src="/images/cpu-on.png" alt="cpu-on">
+                                                    <p>35.5°C</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="device-div">
                                             <div class="device-name">Memory</div>
                                             <div class="device-image">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
-                                                <img id="memory-img" src="/images/memory-slot-on.png" alt="memory-slot">
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="device-div">
                                             <div class="device-name">Ethernet</div>
                                             <div class="device-image">
-                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png" alt="ethernet"/>
-                                                <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png" alt="ethernet"/>
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
                                             </div>
                                         </div>    
                                     </div>
@@ -195,16 +237,15 @@
                                         <div class="table-body">
                                             <div class="table-row">
                                                 <div class="table-key">Ip</div>
-                                                <div class="table-value">10.0.6.106</div>    
+                                                <div class="table-value" id="stand-by-ip"></div>    
                                             </div>
                                             <div class="table-row">
                                                 <div class="table-key">Port</div>
-                                                <div class="table-value">443</div>    
+                                                <div class="table-value" id="stand-by-port"></div>    
                                             </div>
                                         </div>
                                     </div>            
                                 </div>
-                            </div>
                             </div>
                         </div>
                         <div class="detail-table" id="cmm-firmware-info-table">
@@ -233,7 +274,6 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/cmmDashBoard.js"></script>
 </body>
-
-
 </html>
