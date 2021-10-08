@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="/css/chart.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/DashBoard.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -47,7 +48,7 @@
                 <dt class="menu-control"> 
                     <div class="navi-box">Power & Thermal</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/chassisSummary.html'">- Chassis Summary</div>
-                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Supply Summary</div>
+                    <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/powerSupplySummary.html'">- Power Summary</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/temperatureInfo.html'">- Temperature Summary</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/fanInfo.html'">- Fan Summary</div>
                     <div class="navi-box-sub" onclick="location.href='/view/Power_Thermal/smartHeaterInfo.html'">- Smart Heater Summary</div>
@@ -87,37 +88,142 @@
                     <div class="Plate-Header">
                         <h2>CMM Summary</h2>
                     </div>
-                    <div class="Plate-Body" id="Summary-Front">
-                        <div class="cmm-box">
-                            <div class="cmm-plate">
-                                this is cmm #1
+                    <div class="Plate-Body">
+                        <div class="double-table">
+                            <div class="left-table">
+                                <div class="double-table-header">
+                                    <h3>CMM #1</h3> 
+                                    <div class="cmm-status">
+                                        <img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png"/>
+                                        <p>Active</p>
+                                    </div>        
+                                </div>
+                                <div class="double-table-body">
+                                    <div class="device-plate">
+                                        <div class="device-div">
+                                            <div class="device-name">Power</div>
+                                            <div class="device-image">
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Cpu</div>
+                                            <div class="device-image">
+                                                <div class="img-div">
+                                                    <img src="/images/cpu-on.png" alt="cpu-on">
+                                                    <p>35.5°C</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Memory</div>
+                                            <div class="device-image">
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Ethernet</div>
+                                            <div class="device-image">
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
                             </div>
-                            <div class="cmm-status">
-                                <img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png"/>
-                                <p>Active</p>
+                            <div class="right-table">
+                                <div class="double-table-header">
+                                    <h3>CMM #2</h3> 
+                                    <div class="cmm-status">
+                                        <img src="https://img.icons8.com/emoji/48/000000/yellow-circle-emoji.png"/>
+                                        <p>Stand-By</p>
+                                    </div>        
+                                </div>
+                                <div class="double-table-body">
+                                    <div class="device-plate">
+                                        <div class="device-div">
+                                            <div class="device-name">Power</div>
+                                            <div class="device-image">
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="/images/power-on.png" alt="power-on">
+                                                    <p>36.5°C</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Cpu</div>
+                                            <div class="device-image">
+                                                <div class="img-div">
+                                                    <img src="/images/cpu-on.png" alt="cpu-on">
+                                                    <p>35.5°C</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Memory</div>
+                                            <div class="device-image">
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                                <div id="memory-img" class="img-div">
+                                                    <img src="/images/memory-slot-on.png" alt="memory-slot">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-div">
+                                            <div class="device-name">Ethernet</div>
+                                            <div class="device-image">
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
+                                                <div class="img-div">
+                                                    <img src="https://img.icons8.com/wired/64/000000/ethernet-on.png"/>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <hr class="vertical"/>
-                        <div class="cmm-box">
-                            <div class="cmm-plate">
-                                this is cmm #2
-                            </div>
-                            <div class="cmm-status">
-                                <img src="https://img.icons8.com/emoji/48/000000/yellow-circle-emoji.png"/>
-                                <p>Stand By</p>
-                            </div>
-                        </div>             
                     </div>
                 </div>
                 <div class="Plate">
                     <div class="Plate-Header">
                         <h2>Module Summary</h2>
                         <div class="select-box">
-                            <select name="BMC-SELECT">
-                                <option value="CM1" selected="selected">CM #1</option>
-                                <option value="CM2">CM #2</option>
-                                <option value="SM1">SM #1</option>
-                                <option value="SM2">SM #2</option>
+                            <select id="blade-server-select" name="BMC-SELECT">
                             </select>
                         </div>
                     </div>
@@ -125,44 +231,44 @@
                         <div class="cpu-memory-box">
                             <div class="device-name">cpu/memory</div>
                             <ul>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/memory21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/memory21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
-                                <li><img src="/images/slot21.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/cpu-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/cpu-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
+                                <li><img src="/images/memory-slot-on.png"/></li>
                             </ul>
                         </div>
                         <hr class="horizontal"/>
                         <div class="fan-box">
                             <div class="device-name">fan</div>
                             <ul>
-                                <li><img src="/images/fan21.png"/></li>
-                                <li><img src="/images/fan21.png"/></li>
-                                <li><img src="/images/fan21.png"/></li>
-                                <li><img src="/images/fan21.png"/></li>
-                                <li><img src="/images/fan21.png"/></li>
-                                <li><img src="/images/fan21.png"/></li>
+                                <li><img src="/images/fan11.png"/></li>
+                                <li><img src="/images/fan11.png"/></li>
+                                <li><img src="/images/fan11.png"/></li>
+                                <li><img src="/images/fan11.png"/></li>
+                                <li><img src="/images/fan11.png"/></li>
+                                <li><img src="/images/fan11.png"/></li>
                             </ul>
                         </div>
                         <hr class="horizontal"/>
@@ -185,6 +291,13 @@
                         <div class="temperature-and-rpm-plate">
                             <div class="temperature-box">
                                 <div class="device-name">temperature</div>
+                                <div class="chart-div">
+                                    <canvas id="temperature-chart" height="200" width="500"></canvas>                              
+                                    <div class="multi-btn-row-div">
+                                        <button id="temp" onclick="timeFlagChange(this)" class="normal">Minute</button>
+                                        <button id="temp" onclick="timeFlagChange(this)" class="normal">Hour</button>
+                                    </div>
+                                </div>                                    
                             </div>
                             <div class="fan-rpm-box">
                                 <div class="device-name">fan rpm</div>
@@ -200,6 +313,7 @@
         </div>
     </div>
     <script type="module" src="/controller/loginModal.js"></script>
+    <script type="module" src="/controller/index.js"></script>
 </body>
 
 
